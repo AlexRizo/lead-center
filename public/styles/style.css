@@ -1,0 +1,199 @@
+:root {
+    --bg-color: #f3f3f3;
+    --card-color: #ffffff;
+    --card-body-color: #f8f8f8;
+
+    --sec-color: #5cc6d2;
+    --sec-color-hover: #54b7b7;
+
+    --border-input-color: #767676;
+
+    --border-card-color: #dddddd;
+
+    --sec-text-color: #B7B7B7;
+
+    --selected-color: #bcbcbc;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background: var(--bg-color);
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+.body {
+    display: flex;
+}
+
+/** Página de login  */
+.login-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-card {
+    background: var(--card-color);
+    padding: 20px 60px;
+    box-shadow: rgba(0, 0, 0, 0.345) 0px 0px 15px;
+}
+
+.input-container, .login-card-title, .btn-login {
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-card-title {
+    text-align: center;
+}
+
+/*? Global  */
+.input {
+    background: none;
+    border: 1px solid var(--border-input-color);
+    outline: 0 none;
+    padding: 10px 20px;
+    margin-top: 5px;
+    width: 250px;
+}
+
+.input:focus {
+    outline: 1px solid var(--sec-color);
+    border-color:  var(--sec-color);
+}
+
+.btn {
+    padding: 10px 0;
+    background: var(--sec-color);
+    outline: 0 none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--sec-color-hover);
+    outline: 1px solid var(--sec-color);
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.selected {
+    color: white;
+}
+
+.card {
+    background: var(--card-color);
+    border: 1px solid var(--border-card-color);
+    border-radius: 5px;
+    padding: 20px 10px;
+}
+
+/** Barra de navegación / menú */
+.menu {
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+    font-size: 14px;
+    background: var(--card-color);
+    height: 100vh;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: center;
+    padding: 25px 0;
+}
+
+.menu-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item {
+    padding: 8px 0 8px 22px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.menu-item:hover {
+    background: rgb(200, 200, 200);
+}
+
+.menu-opt {
+    margin-left: 10px;
+}
+
+.menu-opt-icon {
+    min-width: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+/** HOME:  */
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+}
+
+.section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    width: 1400px;
+    background: var(--card-color);
+    border: 1px solid var(--border-card-color);
+}
+
+.table-head, .table-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.table-head {
+    padding: 10px 0;
+}
+
+.table-body {
+    background: var(--card-body-color);
+}
+
+.table-body:hover {
+    background: var(--selected-color);
+}
+
+.table-item {
+    width: 200px;
+    text-align: center;
+    padding: 15px 0;
+}

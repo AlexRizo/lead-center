@@ -1,0 +1,40 @@
+TEAM WORK CENTER
+
+:::::
+
+
+<============>
+
+( ? ): rutas protegidas {roleId, jwt};
+
+<============>
+
+Routes:
+
+home {
+  '/',
+  '/holamundo',
+}
+
+auth {
+  '/auth',
+  '/auth/login',
+}
+
+users {
+  '/user',
+  ? '/user/get',
+  ? '/user/create',
+  ? '/user/update/:id',
+  ? '/user/delete/:id',
+}
+
+staff {
+  '/staff',
+  ? '/staff/role/create',
+}
+
+team {
+  '/team',
+  ? '/team/create',
+}

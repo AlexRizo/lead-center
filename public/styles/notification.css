@@ -1,0 +1,22 @@
+.notification {
+    transition: 1s;
+    position: absolute;
+    padding: 20px;
+    background: var(--card-color);
+    height: fit-content;
+    top: -20%;
+    right: 10px;
+    width: 350px;
+    box-shadow: 1px 1px var(--sec-color);
+}
+
+.notification-title, .notification-body {
+    padding: 5px 0;
+    text-overflow: clip;
+    overflow: hidden;
+}
+
+.notification-show {
+    top: 10px;
+    transition: 1s;
+}

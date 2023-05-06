@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/notification.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="/js/extras/notifications.js"></script>
+    <script src="https://kit.fontawesome.com/d9eee5c7f7.js" crossorigin="anonymous"></script>
+    <script src='/socket.io/socket.io.js'></script>
+    <script src="/js/layout.js"></script>
+    <title>Altozano Lead Center</title>
+</head>
+<body>
+    <section class="body">
+        <nav class="menu">
+            <div class="menu-header"><h1>Altozano LeadC</h1></div>
+            <div class="menu-nav">
+                <a class="menu-item" href="/">
+                    <div class="menu-opt-icon">
+                        <i class="fa-solid fa-house fa-lg" style="color: black;"></i>
+                    </div>
+                    <p class="menu-opt">Inicio</p>
+                </a>
+                <a class="menu-item" href="/leads/new">
+                    <div class="menu-opt-icon">
+                        <i class="fa-solid fa-user-plus" style="color: black;"></i>
+                    </div>
+                    <p class="menu-opt">Nuevo Lead</p>
+                </a>
+                <a class="menu-item" href="/leads/my-leads">
+                    <div class="menu-opt-icon">
+                        <i class="fa-solid fa-people-roof fa-lg" style="color: black;"></i>
+                    </div>
+                    <p class="menu-opt">Mis Leads</p>
+                </a>
+                <a class="menu-item" href="/administration">
+                    <div class="menu-opt-icon">
+                        <i class="fa-solid fa-id-card" style="color: black;"></i>
+                    </div>
+                    <p class="menu-opt">Administración</p>
+                </a>
+                <a class="menu-item" href="#log-out">
+                    <div class="menu-opt-icon">
+                        <i class="fa-solid fa-arrow-right-from-bracket fa-lg" style="color: black;"></i>
+                    </div>
+                    <p class="menu-opt">Salir</p>
+                </a>
+            </div>
+        </nav>
+        <div class="content">
+            <%-body%>
+        </div>
+    </section>
+</body>
+</html>
