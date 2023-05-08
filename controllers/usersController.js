@@ -1,10 +1,11 @@
 import formatDate from "../helpers/formDate.js";
+import Staff from "../models/staff.js";
 import User from "../models/user.js";
 
 export const getUsers = async(req, res) => {
-    const leads = await User.findAll({ where: { contact_status: 0 } });
+    const leads = await User.findAll({ where: { contact_status: 0 }, include: Staff });
     
-    res.json(leads);
+    res.json({ leads });
 }
 
 export const createUserByZapier = async(req, res) => {

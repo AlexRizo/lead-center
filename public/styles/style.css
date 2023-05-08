@@ -197,3 +197,27 @@ h1 {
     text-align: center;
     padding: 15px 0;
 }
+
+
+/* * LEAD */
+.principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 300px;
+}
+
+.profile-img {
+    padding: 10px;
+    border-radius: 100%;
+    background: rgb(199, 199, 199);
+}
+
+.username {
+    padding: 10px 0 0 0;
+}
+
+.status {
+    padding: 10px 0 0 0;
+}

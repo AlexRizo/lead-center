@@ -2,7 +2,7 @@
     transition: 1s;
     position: absolute;
     padding: 20px;
-    background: var(--card-color);
+    background: rgb(223, 238, 236);
     height: fit-content;
     top: -20%;
     right: 10px;

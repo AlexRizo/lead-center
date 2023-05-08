@@ -15,9 +15,9 @@ export const updateStaff = async(req, res) => {
     const { name, email, password, roleId, status } = req.body;
     const { id } = req.params;
 
-    // if (req.user.roleId != 2 && req.user.roleId != 3 ) {
-    //     return res.status(403).json({ error: 'Faltan permisos.' });
-    // }
+    if (req.user.roleId != 2 && req.user.roleId != 3 ) {
+        return res.status(403).json({ error: 'Faltan permisos.' });
+    }
 
     const user = {};
 
