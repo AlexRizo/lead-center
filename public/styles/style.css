@@ -194,8 +194,10 @@ h1 {
 
 .table-item {
     width: 200px;
-    text-align: center;
     padding: 15px 0;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 
@@ -290,4 +292,38 @@ h1 {
 
 .contacted {
     background: #5cd2b9;
+}
+
+
+/* * My Leads */
+.without-pending {
+    text-align: center;
+    color: var(--sec-text-color);
+}
+
+.mini-table-head, .mini-table-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.mini-table-row:hover {
+    background: var(--selected-color);
+}
+
+.mini-table-head-item {
+    text-align: center;
+    width: 25%;
+    border-top: solid;
+    border-bottom: solid;
+    border-color: var(--border-card-color);
+    border-width: 1.5px;
+    padding: 10px 0;
+}
+
+.mini-table-body-item {
+    text-align: center;
+    width: 25%;
+    padding: 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

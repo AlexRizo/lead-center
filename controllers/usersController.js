@@ -8,6 +8,14 @@ export const getUsers = async(req, res) => {
     res.json({ leads });
 }
 
+export const getMyUsers = async(req, res) => {
+    const { id } = req.user;
+    
+    const pendingLeads = await User.findAll({ where: { staffId: id, contact_status: 0 } });
+    
+    return res.status(200).json({ pendingLeads });
+}
+
 export const createUserByZapier = async(req, res) => {
     const { platformId, date_contact, ...userInfo } = req.body;
     const zapierPass = req.header('zapierPass');
@@ -34,15 +42,16 @@ export const createUserByZapier = async(req, res) => {
 }
 
 export const createUser = async(req, res) => {
-    const { user } = req.body;
+    const user = req.body;
+    const staff = req.user;    
 
-    // const response = await User.create(user);
-    console.log(user);
+    if (staff.roleId === 1) {
+        return res.status(200).json({ error: "Sin permisos", message: 'El prospecto no se ha podido crear.' });
+    }
+
+    const response = await User.create(user);
     
-    res.json({ 
-        message: 'Usuario creado correctamente.', 
-        user
-    });
+    return res.json({ message: 'Usuario creado correctamente.' });
 }
 
 export const updateUser = async(req, res) => {

@@ -1,12 +1,14 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { createUser, createUserByZapier, deleteUser, getUsers, updateUser, updateContactStatusUser } from "../controllers/usersController.js";
+import { createUser, createUserByZapier, deleteUser, getUsers, updateUser, updateContactStatusUser, getMyUsers } from "../controllers/usersController.js";
 import validateExpress from "../middlewares/validateExpress.js";
 import { jsonWebTokenMiddleware } from "../jwt/jwt.js";
 
 const router = Router();
 
 router.get('/get-pending', jsonWebTokenMiddleware, getUsers);
+
+router.get('/get-my-leads', jsonWebTokenMiddleware, getMyUsers);
 
 router.post('/create/zapier/api', [
     check('name', 'El nombre es obligatorio.').not().isEmpty(),
@@ -59,6 +61,7 @@ router.put('/update/:id', [
     check('date_contact', 'la fecha de contacto no es válida.').isLength({ max: 10 }),
     check('originId', 'El origen no es válido.').isNumeric(),
     check('platformId', 'la plataforma es no es válida.').isNumeric(),
+    check('note', 'La nota no es válida.').isLength({ max: 500 }),
     validateExpress,
 ], updateUser);
 

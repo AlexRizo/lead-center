@@ -13,6 +13,10 @@ export const leadPage = async(req, res) => {
     const { id } = req.params;
 
     const lead = await User.findByPk(id, { include: { all: true } });
+
+    if (!lead) {
+        return res.redirect('/404');
+    }
     
     return res.render('home/lead', { lead });
 }
@@ -22,5 +26,9 @@ export const addLeadPage = async(req, res) => {
     const origins = await Origin.findAll();
     const platforms = await Platform.findAll();
 
-    return res.render('home/addLead', { staffs, origins, platforms });
+    return res.render('leads/addLead', { staffs, origins, platforms });
+}
+
+export const myLeadPage = async(req, res) => {
+    return res.render('leads/myLeads');
 }
