@@ -56,6 +56,6 @@ export const jsonWebTokenMiddleware = async(req, res, next) => {
         next();
     } catch (error) {
         console.log(error);
-        res.status(401).json({ error: 'Error al validar el token.' });
+        res.status(401).json({ error: 'Error al validar el token. No se ha cargado la información correctamente.' });
     }
 } 

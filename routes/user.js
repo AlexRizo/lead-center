@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { createUser, createUserByZapier, deleteUser, getUsers, updateUser } from "../controllers/usersController.js";
+import { createUser, createUserByZapier, deleteUser, getUsers, updateUser, updateContactStatusUser } from "../controllers/usersController.js";
 import validateExpress from "../middlewares/validateExpress.js";
 import { jsonWebTokenMiddleware } from "../jwt/jwt.js";
 
@@ -49,19 +49,24 @@ router.put('/update/:id', [
     check('date_contact', 'la fecha de contacto es obligatoria.').not().isEmpty(),
     check('contact_status', 'Dato incorrecto').isNumeric(),
     check('originId', 'El origen es obligatorio.').not().isEmpty(),
-    check('platformId', 'la plataforma es obligatorio.').not().isEmpty(),
+    check('platformId', 'la plataforma es obligatoria.').not().isEmpty(),
 
     check('name', 'Limite de caracteres superado').isLength({ max: 100 }),
-    check('email', 'El email es obligatorio.').isLength({ max: 100 }),
-    check('city', 'la cuidad es obligatoria.').isLength({ max: 100 }),
-    check('phone_number', 'El teléfono es obligatorio.').isLength({ max: 15 }),
-    check('reason', 'El motivo es obligatorio.').isLength({ max: 500 }),
-    check('date_contact', 'la fecha de contacto es obligatoria.').isLength({ max: 10 }),
-    check('originId', 'El origen es obligatorio.').isNumeric(),
-    check('platformId', 'la plataforma es obligatorio.').isNumeric(),
-
+    check('email', 'El email no es valido.').isLength({ max: 100 }),
+    check('city', 'la cuidad no es válida.').isLength({ max: 100 }),
+    check('phone_number', 'El teléfono no es válido.').isLength({ max: 15 }),
+    check('reason', 'El motivo no es válido.').isLength({ max: 500 }),
+    check('date_contact', 'la fecha de contacto no es válida.').isLength({ max: 10 }),
+    check('originId', 'El origen no es válido.').isNumeric(),
+    check('platformId', 'la plataforma es no es válida.').isNumeric(),
     validateExpress,
 ], updateUser);
+
+router.put('/update/contact-status/:id', [
+    jsonWebTokenMiddleware,
+    check('contact_status', 'Dato incorrecto').isNumeric(),
+    validateExpress,
+], updateContactStatusUser);
 
 router.delete('/delete/:id', jsonWebTokenMiddleware, deleteUser); 
 

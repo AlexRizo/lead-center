@@ -32,9 +32,8 @@ const init = async() => {
     .then(({ leads, error }) => {
         if (error) {
             sendNotification('Ha ocurrido un error', `${ error } No se han podido cargar los datos.`);
-            return console.warn(error);
+            return console.error(error);
         }
-        console.table(leads);
         createTable(leads)
     })
     .catch(console.error());

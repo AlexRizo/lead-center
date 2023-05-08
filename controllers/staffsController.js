@@ -1,5 +1,21 @@
 import { encrypt } from "../helpers/bcrypt.js";
+import Origin from "../models/origin.js";
+import Platform from "../models/platform.js";
 import Staff from "../models/staff.js";
+
+export const getStaffs = async(req, res) => {
+    const user = req.user;
+
+    if (!user) {
+        return res.status(401).json({ error: 'Ha ocurrido un error (sin autorización).' })
+    }
+    
+    const origins = await Origin.findAll();
+    const platforms = await Platform.findAll();
+    const staffs = await Staff.findAll({ where: { roleId: [1, 2], status: 1 } });
+
+    return res.status(200).json({ response: { staffs, origins, platforms, ur: user.roleId } });
+}
 
 export const createStaff = async(req, res) => {
     const { password, ...user } = req.body;

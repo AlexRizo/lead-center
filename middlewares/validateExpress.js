@@ -1,11 +1,12 @@
 import { validationResult } from "express-validator"
 
 const validateExpress = (req, res, next) => {
-    const errors = validationResult(req);
+    const error = validationResult(req);
 
-    if (!errors.isEmpty()) {
+    if (!error.isEmpty()) {
+        console.log(error);
         return res.status(400).json({
-            res: errors
+            error
         });
     }
 

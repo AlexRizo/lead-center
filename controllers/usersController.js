@@ -46,8 +46,13 @@ export const createUser = async(req, res) => {
 }
 
 export const updateUser = async(req, res) => {
-    const { email, ...user } = req.body;
+    const { email, staffId, ...user } = req.body;
     const { id } = req.params;
+    const staff = req.user;
+
+    if (staff.roleId === 1) {
+        return res.status(401).json({ error:'Sin permisos', message: 'No tienes permisos.' });
+    }
 
     const $userDB = await User.findByPk(id);
 
@@ -63,10 +68,16 @@ export const updateUser = async(req, res) => {
         if(emailExist && emailExist.id != id) {
             return res.status(401).json({error: 'El correo ya existe.'});
         } else if (emailExist && emailExist.id === id) {
-            console.log('Hola mundo');
+            console.log('Autorizado');
         }else {
             user.email = email;
         }
+    }
+
+    if (!staffId) {
+        user.staffId = null;
+    } else {
+        user.staffId = staffId;
     }
     
     await User.update(user, { where: { 'id': id } });
@@ -74,6 +85,14 @@ export const updateUser = async(req, res) => {
     res.json({ 
         message: 'Usuario actualizado correctamente.',
     });
+}
+
+export const updateContactStatusUser = async(req, res) => {
+    const { id, contact_status } = req.body;
+
+    await User.update({ contact_status }, { where: { id } })
+
+    return res.status(200).json({ message: "Se ha marcado como contactado." });
 }
 
 export const deleteUser = async(req, res) => {
