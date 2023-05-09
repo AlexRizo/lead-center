@@ -24,7 +24,7 @@ const createTable = (table, leads = {}, row) => {
         <a class="mini-table-row ${ row }" href="${ url }/leads/view/${ lead.id }">
             <nav class="mini-table-body-item">${ lead.name }</nav>
             <nav class="mini-table-body-item">${ lead.email }</nav>
-            <nav class="mini-table-body-item">${ lead.note || '-------------' }</nav>
+            <nav class="mini-table-body-item">${ lead.saler_note || '-------------' }</nav>
             <nav class="mini-table-body-item">${ status[lead.contact_status] }</nav>
         </a>
         `; 

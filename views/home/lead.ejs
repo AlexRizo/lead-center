@@ -1,25 +1,36 @@
 <div class="section lead">
     <div class="cards-content">
-        <div class="card principal">
-            <img class="profile-img" src="\assets\img\profile.png" alt="profile picture" width="100px">
-            <h4 class="username"><%= lead.name %></h4>
-            <div class="status">
-                <nav class="status-title">Asignado a:</nav>
-                <nav>
-                    <% if (lead.Staff) { %>
-                        <%= lead.Staff.name %>
-                    <% } else { %>
-                        Sin Asignar
-                    <% } %>
-                </nav>
-                <nav class="status-title">Estado:</nav>
-                <nav>
-                    <% if (lead.contact_status) { %>
-                        Contactado
-                    <% } else { %>
-                        Pendiente
-                    <% } %>
-                </nav>
+        <div class="principal-info">
+            <div class="card principal">
+                <img class="profile-img" src="\assets\img\profile.png" alt="profile picture" width="100px">
+                <h4 class="username"><%= lead.name %></h4>
+                <div class="status">
+                    <nav class="status-title">Asignado a:</nav>
+                    <nav>
+                        <% if (lead.Staff) { %>
+                            <%= lead.Staff.name %>
+                        <% } else { %>
+                            Sin Asignar
+                        <% } %>
+                    </nav>
+                    <nav class="status-title">Estado:</nav>
+                    <nav>
+                        <% if (lead.contact_status === 0) { %>
+                            Pendiente
+                        <% } else if (lead.contact_status === 1) { %>
+                            En Seguimiento
+                        <% } else { %>
+                            Contactado
+                        <% } %>
+                    </nav>
+                </div>
+            </div>
+            <div class="card saler">
+                <div class="saler-title">
+                    <h4>Nota del vendedor:</h4>
+                    <i class="fa-solid fa-pen-to-square pointer edit-saler-note" style="color: #000000;"></i>
+                </div>
+                <p class="saler-note"><%= lead.saler_note %></p>
             </div>
         </div>
         <form class="card lead-data">
@@ -82,12 +93,13 @@
                     </div>
                 </div>
                 <div class="input-content">
-                    <label for="note">Fecha de Registro</label>
+                    <label for="note">Nota</label>
                     <textarea class="input input-form" name="note" id="note" maxlength="500" cols="30" rows="10" placeholder="Nota..." required><%= lead.note %></textarea>
                 </div>
             </div>
             <div class="card-footer">
                 <button class="btn btn-form submit" hidden type="submit">Guardar Cambios</button>
+                <button class="btn btn-form follow" type="button">Marcar Como En Seguimiento</button>
                 <button class="btn btn-form contacted" type="button">Marcar Como Contactado</button>
             </div>
         </form>

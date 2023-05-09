@@ -58,6 +58,11 @@ User.init(
             type: new DataTypes.STRING(500),
             allowNull: true,
         },
+        saler_note: {
+            type: new DataTypes.STRING(500),
+            allowNull: true,
+            defaultValue: 'Sin nota.'
+        },
     },
     {
         tableName: 'users',

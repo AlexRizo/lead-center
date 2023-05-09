@@ -112,9 +112,17 @@ export const updateUser = async(req, res) => {
 export const updateContactStatusUser = async(req, res) => {
     const { id, contact_status } = req.body;
 
+    let message = '';
+
     await User.update({ contact_status }, { where: { id } })
 
-    return res.status(200).json({ message: "Se ha marcado como contactado." });
+    if (contact_status === 1) {
+        message = 'Se ha marcado como "En Seguimiento".'
+    } else {
+        message = 'Se ha marcado como "Contactado"'
+    }
+
+    return res.status(200).json({ message });
 }
 
 export const deleteUser = async(req, res) => {

@@ -82,7 +82,7 @@ h1 {
 }
 
 .btn {
-    padding: 10px 0;
+    padding: 10px;
     background: var(--sec-color);
     outline: 0 none;
     border: none;
@@ -203,6 +203,13 @@ h1 {
 
 
 /* * LEAD */
+
+.principal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .principal {
     display: flex;
     flex-direction: column;
@@ -211,6 +218,24 @@ h1 {
     width: 300px;
     height: fit-content;
     white-space: initial;
+    word-wrap: break-word;
+
+}
+
+.saler {
+    width: 300px;
+    word-wrap: break-word;
+}
+
+.saler-note {
+    margin: 10px 0 0 0;
+    white-space: initial;
+}
+
+.saler-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .cards-content {
@@ -273,7 +298,6 @@ h1 {
 }
 
 .btn-form {
-    padding: 10px;
     font-weight: 500;
 }
 
@@ -298,8 +322,18 @@ h1 {
 }
 
 .contacted {
-    background: #5cd2b9;
+    background: #5cd2a1;
 }
+
+.follow {
+    background: #e0c426;
+}
+
+.follow:hover {
+    background: #ac982b;
+    outline: 1px solid #e0c426;
+}
+
 
 
 /* * My Leads */

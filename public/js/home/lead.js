@@ -3,9 +3,17 @@ const staffSelected = document.getElementById('staffId');
 const originSelected = document.getElementById('originId');
 const form = document.querySelector('form');
 const btnContact = document.querySelector('.contacted');
+const btnFollow = document.querySelector('.follow');
 const btnSave = document.querySelector('.submit');
 const id = document.getElementById('id');
 const inputs = document.querySelectorAll('.input');
+const salerCard = document.querySelector('.saler');
+const editSalerNote = document.querySelector('.edit-saler-note');
+const salerNote = document.querySelector('.saler-note');
+
+// ? Elementos creados;
+const salerInput = document.createElement('textarea');
+const saveSalerNote = document.createElement('button');
 
 const createOptionsforSelect = (options, select) => {
     return options.forEach(option => {
@@ -17,10 +25,37 @@ const createOptionsforSelect = (options, select) => {
     });
 }
 
-btnContact.addEventListener('click', () => {
+const createSalerNoteActions = () => {
+    salerInput.style.width = '100%';
+    salerInput.style.height = 'fit-content';
+    salerInput.style.padding = '5px';
+    salerInput.style.resize = 'none';
+    salerInput.maxLength = '500';
+    salerInput.rows= '15';
+    salerInput.value = salerNote.textContent
+    salerInput.className = 'input';
+
+    saveSalerNote.style.margin = '5px 0 0 0';
+    saveSalerNote.className = 'btn';
+    saveSalerNote.innerText = 'Guardar';
+
+    salerNote.innerText = '';
+    salerNote.appendChild(salerInput);
+    salerCard.appendChild(saveSalerNote);
+}
+
+saveSalerNote.addEventListener('click', () => {
+    socket.emit('save-saler-note', { id: id.value }, { saler_note: salerInput.value } );
+})
+
+editSalerNote.addEventListener('click', (ev) => {
+    createSalerNoteActions();
+});
+
+const setContactStatus = (status = 0) => {
     const formData = { 
         id: id.value,
-        contact_status: 1
+        contact_status: status
     };
 
     fetch(`${ url }/users/update/contact-status/${ id.value }`, {
@@ -37,20 +72,29 @@ btnContact.addEventListener('click', () => {
             return sendNotification("Ha Ocurrido un Error", error);
         }
 
-        await sendNotification("Nueva Notificación", message);
+        await sendNotification("Datos Enviados", message);
         setTimeout(() => {
             location.reload();
         }, 5500)
     })
+}
+
+btnFollow.addEventListener('click', () => {
+    setContactStatus(1)
 });
+
+btnContact.addEventListener('click', () => {
+    setContactStatus(2)
+});
+
 
 form.addEventListener('submit', (ev) => {
     ev.preventDefault()
 
     const formData = {};
 
-    for (const input of inputs) {
-        formData[input.name] = input.value;
+    for (const el of inputs) {
+        formData[el.name] = el.value;
     }
 
     fetch(`${ url }/users/update/${ id.value }`, {
@@ -96,6 +140,14 @@ const init = async() => {
         }
     })
     .catch(console.error());
+
+    // ! Sockets zone;
+    socket.on('saler-note-saved', ({ id }) => {
+        sendNotification('Datos enviados', `Se ha actualizado el registro #${ id }.`);
+        setTimeout(() => {
+            location.reload();
+        }, 5300);
+    });
 }
 
 const main = async() => {
