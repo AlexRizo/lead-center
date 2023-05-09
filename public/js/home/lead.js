@@ -67,15 +67,15 @@ const setContactStatus = (status = 0) => {
         },
     })
     .then(response => response.json())
-    .then(async({ message, error }) => {
+    .then(({ message, error }) => {
         if (error) {
             return sendNotification("Ha Ocurrido un Error", error);
         }
 
-        await sendNotification("Datos Enviados", message);
+        sendNotification("Datos Enviados", message);
         setTimeout(() => {
             location.reload();
-        }, 5500)
+        }, 5300)
     })
 }
 

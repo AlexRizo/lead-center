@@ -1,41 +1,69 @@
-<div class="section lead">
+<div class="section admin">
     <div class="cards-content">
-        <div class="principal-info">
-            <div class="card principal">
-                
-            </div>
-            <div class="card saler">
-                <div class="saler-title">
-                    <h4>Nota del vendedor:</h4>
-                    <i class="fa-solid fa-pen-to-square pointer edit-saler-note" style="color: #000000;"></i>
+        <div class="principal-info notes-section">
+            <div class="card admin">
+                <div class="notes-title">
+                    <h4>Notas</h4>
                 </div>
-                <p class="saler-note">text test</p>
+            </div>
+            <div class="card admin">
+                <div class="note">
+                    <nav class="note-title">Usuarios Inactivos:</nav>
+                    <p>Los usuarios inactivos no tienen acceso al sistema.</p>
+                </div>
             </div>
         </div>
-        <div class="card lead-data">
-            <div class="card-header">
-                <h3 class="card-title">Vendedores</h3>
-            </div>
-            <div class="card-body">
-                <div class="mini-table users">
-                    <div class="mini-table-head" id="table">
-                        <nav class="mini-table-head-item">Nombre</nav>
-                        <nav class="mini-table-head-item">Correo</nav>
-                        <nav class="mini-table-head-item">Rol</nav>
-                        <nav class="mini-table-head-item">Estatus</nav>
+
+        <div class="cards-content-col">
+            <div class="card salers-data">
+                <div class="card-header">
+                    <h3 class="card-title">Vendedores</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mini-table users">
+                        <div class="mini-table-head" id="table">
+                            <nav class="mini-table-head-item">Nombre</nav>
+                            <nav class="mini-table-head-item">Correo</nav>
+                            <nav class="mini-table-head-item">Rol</nav>
+                            <nav class="mini-table-head-item">Estatus</nav>
+                        </div>
+                        <% users.forEach(user => { %>
+                            <div class="mini-table-row pointer" onclick="viewAdmin('<%= user.id %>')">
+                                <nav class="mini-table-body-item"><%= user.name %></nav>
+                                <nav class="mini-table-body-item"><%= user.email %></nav>
+                                <nav class="mini-table-body-item"><%= user.Role.name %></nav>
+                                <nav class="mini-table-body-item"><%= user.status === false ? 'Inactivo' : 'Activo' %></nav>
+                            </div>
+                        <% }) %>
                     </div>
-                    <% users.forEach(user => { %>
-                        <a href="/salers/view/<%= user.id %>" class="mini-table-row">
-                            <nav class="mini-table-body-item"><%= user.name %></nav>
-                            <nav class="mini-table-body-item"><%= user.email %></nav>
-                            <nav class="mini-table-body-item"><%= user.Role.name %></nav>
-                            <nav class="mini-table-body-item"><%= user.status === 0 ? 'Inactivo' : 'Activo' %></nav>
-                        </a>
-                    <% }) %>
+                </div>
+            </div>
+    
+            <div class="card not-asigned-data">
+                <div class="card-header">
+                    <h3 class="card-title">Prospectos sin Asignar</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mini-table leads">
+                        <div class="mini-table-head" id="table">
+                            <nav class="mini-table-head-item">Nombre</nav>
+                            <nav class="mini-table-head-item">Campaña</nav>
+                            <nav class="mini-table-head-item">Plataforma</nav>
+                            <nav class="mini-table-head-item">Asignación</nav>
+                        </div>
+                        <% leads.forEach(lead => { %>
+                            <div class="mini-table-row pointer" onclick="viewLead('<%= lead.id %>')">
+                                <nav class="mini-table-body-item"><%= lead.name %></nav>
+                                <nav class="mini-table-body-item"><%= lead.Origin.name %></nav>
+                                <nav class="mini-table-body-item"><%= lead.Platform.name %></nav>
+                                <nav class="mini-table-body-item">Pendiente</nav>
+                            </div>
+                        <% }) %>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="/js/home/lead.js"></script>
+<script src="/js/home/administration.js"></script>

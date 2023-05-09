@@ -219,7 +219,6 @@ h1 {
     height: fit-content;
     white-space: initial;
     word-wrap: break-word;
-
 }
 
 .saler {
@@ -265,7 +264,7 @@ h1 {
 }
 
 .status-title {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
     margin-top: 5px;
 }
@@ -366,4 +365,41 @@ h1 {
     padding: 10px 0;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* * SALERS */
+.salers-data {
+    width: 1080px;
+}
+
+.admin {
+    width: 300px;
+}
+
+.user-principal {
+    width: 380px;
+}
+
+.user-data {
+    width: 1000px;
+}
+
+.details {
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    width: 90%;
+}
+
+.notes-section {
+    gap: 10px;
+}
+
+.note {
+    font-size: 14px;
+}
+
+.note-title {
+    font-weight: 500;
 }

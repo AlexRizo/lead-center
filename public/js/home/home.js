@@ -11,7 +11,7 @@ const createTable = (leads = {}) => {
 
     leads.forEach(lead => {
         table.innerHTML += `
-        <a href="${ url }/leads/view/${ lead.id }" class="table-body">
+        <a href="${ url }/leads/view/${ lead.id }?tkn=${ token }" class="table-body">
             <nav class="table-item">${ lead.name }</nav>
             <nav class="table-item">${ lead.email }</nav>
             <nav class="table-item">${ lead.city }</nav>

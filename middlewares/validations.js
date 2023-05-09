@@ -1,6 +1,6 @@
 import { validateJWT } from "../jwt/jwt.js";
 
-const role = async(req, res, next) => {
+export const role = async(req, res, next) => {
     const { tkn } = req.query;
 
     const user = await validateJWT(tkn);
@@ -13,5 +13,3 @@ const role = async(req, res, next) => {
     
     return next();
 }
-
-export default role;

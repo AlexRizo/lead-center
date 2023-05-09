@@ -40,7 +40,7 @@ export const updateStaff = async(req, res) => {
     const $userDB = await Staff.findByPk(id);
 
     if (!$userDB) {
-        return res.status(401).json({ 
+        return res.status(400).json({ 
             error: 'El usuario no existe.' 
         });
     }
@@ -62,7 +62,11 @@ export const updateStaff = async(req, res) => {
     }
 
     if (password) {
-        user.password = encrypt(password);
+        if (password.length > 0 && password.length < 6) {
+            return res.status(400).json({ error: 'La contraseña debe ser mayor a 6 caracteres.' });
+        } else {
+            user.password = encrypt(password);
+        }
     }
 
     if (roleId) {
@@ -73,9 +77,7 @@ export const updateStaff = async(req, res) => {
         user.status = status;
     }
     
-    await Staff.update(user, { where: { 'id': id } });
+    await Staff.update(user, { where: { id } });
     
-    res.json({ 
-        message: 'Usuario actualizado correctamente.',
-    });
+    return res.json({ message: 'Usuario actualizado correctamente.', });
 }
