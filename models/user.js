@@ -35,7 +35,7 @@ User.init(
         },
         contact_status: {
             type: new DataTypes.STRING(2),
-            defaultValue: 'a1',
+            defaultValue: 0,
             allowNull: false,
         },
         date_contact: {
