@@ -34,12 +34,14 @@ form.addEventListener('submit', (ev) => {
         headers: { 'Content-Type': 'application/json' }
     })
     .then(response => response.json())
-    .then(({ error, tkn }) => {
+    .then(({ error, tkn, ur, uid }) => {
         if (error) {
             sendNotification('Ha ocurrido un error', error);
             return console.error(error);
         } else {
             localStorage.setItem('tkn', tkn);
+            localStorage.setItem('ur', ur);
+            localStorage.setItem('uid', uid);
             location.reload();
         }
     })

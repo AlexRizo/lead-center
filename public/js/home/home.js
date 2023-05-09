@@ -16,7 +16,7 @@ const createTable = (leads = {}) => {
             <nav class="table-item">${ lead.email }</nav>
             <nav class="table-item">${ lead.city }</nav>
             <nav class="table-item">${ lead.phone_number }</nav>
-            <nav class="table-item">${ lead.reason }</nav>
+            <nav class="table-item">${ lead.Origin.name }</nav>
             <nav class="table-item">${ lead.date_contact }</nav>
             <nav class="table-item">${ ((lead.staffId) != null ? lead.Staff.name : 'Sin asignar') }</nav>
         </a>`; 
@@ -26,7 +26,11 @@ const createTable = (leads = {}) => {
 const init = async() => {
     await fetch(`${ url }/users/get-pending`, {
         method: 'GET',
-        headers: { tkn: token },
+        headers: {
+            tkn: token,
+            ur: localStorage.getItem('ur'),
+            uid: localStorage.getItem('uid')
+        },
     })
     .then(response => response.json())
     .then(({ leads, error }) => {

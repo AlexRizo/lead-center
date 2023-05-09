@@ -23,7 +23,7 @@ export const login = async(req, res) => {
 
         const tkn = await generateJWT(user.id);
 
-        res.json({ user, tkn });
+        res.json({ tkn, ur: user.roleId, uid: user.id });
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: 'Error with the server ( error: 500 )'});       

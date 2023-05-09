@@ -3,7 +3,16 @@ import Staff from "../models/staff.js";
 import User from "../models/user.js";
 
 export const getUsers = async(req, res) => {
-    const leads = await User.findAll({ where: { contact_status: 0 }, include: Staff });
+    const ur = req.header('ur')
+    const uid = req.header('uid')
+
+    let leads;
+
+    if (ur == 1) {
+        leads = await User.findAll({ where: { contact_status: [0, 1], staffId: uid }, include: { all: true } });
+    } else {
+        leads = await User.findAll({ where: { contact_status: 0 }, include: { all: true } });
+    }
     
     res.json({ leads });
 }

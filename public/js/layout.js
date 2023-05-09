@@ -10,12 +10,29 @@ if (!token) {
 
 let socket;
 
+window.addEventListener('load', () => {
+    const adminPage = document.getElementById('admin')
+    const addNewpage = document.getElementById('add-lead')
+
+    if (localStorage.getItem('ur') != 1) {
+        console.log(localStorage.getItem('ur'));
+        adminPage.classList.toggle('hidden');
+        addNewpage.classList.toggle('hidden');
+    }
+})
+
 const adminSection = () => {
     window.location = `${ url }/administration?tkn=${ token }`;
 };
 
+const addLead = () => {
+    window.location = `${ url }/leads/new?tkn=${ token }`;
+}
+
 const logout = () => {
     localStorage.removeItem('tkn');
+    localStorage.removeItem('ur');
+    localStorage.removeItem('uid');
     window.location = url;
 }
 
@@ -29,8 +46,10 @@ const connectSocket = async() => {
     socket.on('connect', () => console.log('Socket Online'));
     socket.on('disconnect', () => {
         console.log('Socket Offline')
-        // localStorage.removeItem('tkn');
-        // window.location = url;
+        localStorage.removeItem('tkn');
+        localStorage.removeItem('ur');
+        localStorage.removeItem('uid');
+        window.location = url;
     });
 }
 
