@@ -31,9 +31,9 @@ form.addEventListener('submit', (ev) => {
         }
                 
         sendNotification("Prospecto creado", message);
-        // setTimeout(() => {
-        //     location.reload();
-        // }, 5300)
+        setTimeout(() => {
+            location.reload();
+        }, 5300)
     })
 });
 

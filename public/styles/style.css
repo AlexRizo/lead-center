@@ -117,6 +117,7 @@ h1 {
     font-size: 14px;
     background: var(--card-color);
     height: 100vh;
+    position: fixed;
 }
 
 .menu-header {
@@ -157,7 +158,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px;
+    padding: 25px 25px 0 325px;
 }
 
 .section {
@@ -215,6 +216,12 @@ h1 {
 .cards-content {
     display: flex;
     flex-direction: row;
+    gap: 20px;
+}
+
+.cards-content-col {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
@@ -296,7 +303,7 @@ h1 {
 
 
 /* * My Leads */
-.without-pending {
+.leyend {
     text-align: center;
     color: var(--sec-text-color);
 }
@@ -313,11 +320,10 @@ h1 {
 .mini-table-head-item {
     text-align: center;
     width: 25%;
-    border-top: solid;
     border-bottom: solid;
     border-color: var(--border-card-color);
     border-width: 1.5px;
-    padding: 10px 0;
+    padding: 0 0 20px 0;
 }
 
 .mini-table-body-item {

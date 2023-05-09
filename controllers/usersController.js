@@ -10,10 +10,23 @@ export const getUsers = async(req, res) => {
 
 export const getMyUsers = async(req, res) => {
     const { id } = req.user;
+    const status = req.header('status');
+
+    let leads;
+
+    switch (status) {
+        case "0":
+            leads = await User.findAll({ where: { staffId: id, contact_status: 0 } });
+            break;
+        case "1":
+            leads = await User.findAll({ where: { staffId: id, contact_status: 1 } });            
+            break;
+        case "2":
+            leads = await User.findAll({ where: { staffId: id, contact_status: 2 } });            
+            break;
+    }
     
-    const pendingLeads = await User.findAll({ where: { staffId: id, contact_status: 0 } });
-    
-    return res.status(200).json({ pendingLeads });
+    return res.status(200).json({ leads });
 }
 
 export const createUserByZapier = async(req, res) => {

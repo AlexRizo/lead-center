@@ -34,8 +34,8 @@ User.init(
             allowNull: false,
         },
         contact_status: {
-            type: new DataTypes.INTEGER,
-            defaultValue: 0,
+            type: new DataTypes.STRING(2),
+            defaultValue: 'a1',
             allowNull: false,
         },
         date_contact: {
