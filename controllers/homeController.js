@@ -21,7 +21,7 @@ export const leadPage = async(req, res) => {
         return res.redirect('/404');
     }
 
-    if (!user || user.id === 1 && user.id != lead.staffId ) {
+    if (!user || user.roleId === 1 && user.id != lead.staffId ) {
         return res.redirect('/403');
     }
     
