@@ -32,3 +32,19 @@ export const addLeadPage = async(req, res) => {
 export const myLeadPage = async(req, res) => {
     return res.render('leads/myLeads');
 }
+
+export const adminPage = async(req, res) => {
+    const SR = (req.staffRole);
+    let users = {};
+
+    switch (SR) {
+        case 2:
+            users = await Staff.findAll({ include: { all: true }, where: { roleId: [1, 2] }, order: [['roleId', 'DESC']] });                        
+            break;
+        case 3:
+            users = await Staff.findAll({ include: { all: true }, order: [['roleId', 'DESC']] });                        
+            break;
+    }
+    
+    return res.render('home/administration', { users })
+}

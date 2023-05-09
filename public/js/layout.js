@@ -10,6 +10,10 @@ if (!token) {
 
 let socket;
 
+const adminSection = () => {
+    window.location = `${ url }/administration?tkn=${ token }`;
+};
+
 const logout = () => {
     localStorage.removeItem('tkn');
     window.location = url;

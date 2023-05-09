@@ -1,0 +1,41 @@
+<div class="section lead">
+    <div class="cards-content">
+        <div class="principal-info">
+            <div class="card principal">
+                
+            </div>
+            <div class="card saler">
+                <div class="saler-title">
+                    <h4>Nota del vendedor:</h4>
+                    <i class="fa-solid fa-pen-to-square pointer edit-saler-note" style="color: #000000;"></i>
+                </div>
+                <p class="saler-note">text test</p>
+            </div>
+        </div>
+        <div class="card lead-data">
+            <div class="card-header">
+                <h3 class="card-title">Vendedores</h3>
+            </div>
+            <div class="card-body">
+                <div class="mini-table users">
+                    <div class="mini-table-head" id="table">
+                        <nav class="mini-table-head-item">Nombre</nav>
+                        <nav class="mini-table-head-item">Correo</nav>
+                        <nav class="mini-table-head-item">Rol</nav>
+                        <nav class="mini-table-head-item">Estatus</nav>
+                    </div>
+                    <% users.forEach(user => { %>
+                        <a href="/salers/view/<%= user.id %>" class="mini-table-row">
+                            <nav class="mini-table-body-item"><%= user.name %></nav>
+                            <nav class="mini-table-body-item"><%= user.email %></nav>
+                            <nav class="mini-table-body-item"><%= user.Role.name %></nav>
+                            <nav class="mini-table-body-item"><%= user.status === 0 ? 'Inactivo' : 'Activo' %></nav>
+                        </a>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/home/lead.js"></script>

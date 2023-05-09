@@ -84,6 +84,10 @@ class Server {
             res.sendFile(path.join(__dirname, '../public/auth', 'login.html'));
         });
 
+        this.app.get('/403', (req, res) => {
+            res.sendFile(path.join(__dirname, '../public/errors', '403.html'));
+        });
+
         this.app.get('*', (req, res) => {
             res.sendFile(path.join(__dirname, '../public/errors', '404.html'));
         });
