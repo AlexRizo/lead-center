@@ -48,18 +48,20 @@ export const createUserByZapier = async(req, res) => {
 
     switch (platformId) {
         case 'fb':
-            userInfo.plaformId = 3
+            userInfo.platformId = 3
             break;
         case 'ig':
-            userInfo.plaformId = 4
+            userInfo.platformId = 4
             break;
         default:
-            userInfo.plaformId = 7
+            userInfo.platformId = 7
             break;
     }
 
     userInfo.date_contact = formatDate(date_contact);
+
     await User.create(userInfo);
+
     return res.json({ response: 'Prospecto agregado correctamente.', userInfo });
 }
 
@@ -71,7 +73,7 @@ export const createUser = async(req, res) => {
         return res.status(200).json({ error: "Sin permisos", message: 'El prospecto no se ha podido crear.' });
     }
 
-    const response = await User.create(user);
+    await User.create(user);
     
     return res.json({ message: 'Usuario creado correctamente.' });
 }
@@ -110,12 +112,8 @@ export const updateUser = async(req, res) => {
     } else {
         user.staffId = staffId;
     }
-
-    console.table(user);
     
     await User.update(user, { where: { 'id': id } });
-    
-    
     
     res.json({ 
         message: 'Usuario actualizado correctamente.',

@@ -1,6 +1,6 @@
 const url = (window.location.hostname.includes('localhost')
-            ? 'http://localhost:3000'
-            : 'https://alowee.twc.com');
+            ? 'http://localhost:8080'
+            : 'https://altozano.leadscenter.com');
 
 const token = localStorage.getItem('tkn') || null;
 

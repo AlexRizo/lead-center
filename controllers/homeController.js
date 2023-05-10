@@ -53,7 +53,7 @@ export const adminPage = async(req, res) => {
             break;
     }
 
-    const leads = await User.findAll({ where: { staffId: null }, include: { all: true } });
+    const leads = await User.findAll({ where: { staffId: null }, include: [Origin, Platform] });
     
     return res.render('home/administration', { users, leads })
 }
