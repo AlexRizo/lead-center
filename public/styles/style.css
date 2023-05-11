@@ -374,14 +374,16 @@ display: none !important;
 }
 
 .mini-table-body-item {
-    text-align: center;
     width: 25%;
-    padding: 15px 0 0 0;
+    padding: 10px 0;
     overflow: hidden;
     text-overflow: ellipsis;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* * SALERS */
+/* * SELLERS */
 .salers-data {
     width: 1080px;
 }

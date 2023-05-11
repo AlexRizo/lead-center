@@ -81,4 +81,4 @@ export const viewAdminPage = async(req, res) => {
         roles,
         user
     });
-}
+} 
