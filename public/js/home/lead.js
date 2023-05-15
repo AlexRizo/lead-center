@@ -7,9 +7,9 @@ const btnFollow = document.querySelector('.follow');
 const btnSave = document.querySelector('.submit');
 const id = document.getElementById('id');
 const inputs = document.querySelectorAll('.input');
-const salerCard = document.querySelector('.saler');
-const editSalerNote = document.querySelector('.edit-saler-note');
-const salerNote = document.querySelector('.saler-note');
+const salerCard = document.querySelector('.seller');
+const editSalerNote = document.querySelector('.edit-seller-note');
+const salerNote = document.querySelector('.seller-note');
 
 // ? Elementos creados;
 const salerInput = document.createElement('textarea');
@@ -45,7 +45,7 @@ const createSalerNoteActions = () => {
 }
 
 saveSalerNote.addEventListener('click', () => {
-    socket.emit('save-saler-note', { id: id.value }, { saler_note: salerInput.value } );
+    socket.emit('save-seller-note', { id: id.value }, { saler_note: salerInput.value } );
 })
 
 editSalerNote.addEventListener('click', (ev) => {
@@ -142,7 +142,7 @@ const init = async() => {
     .catch(console.error());
 
     // ! Sockets zone;
-    socket.on('saler-note-saved', ({ id }) => {
+    socket.on('seller-note-saved', ({ id }) => {
         sendNotification('Datos enviados', `Se ha actualizado el registro #${ id }.`);
         setTimeout(() => {
             location.reload();

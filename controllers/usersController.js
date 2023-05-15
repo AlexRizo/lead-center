@@ -96,18 +96,10 @@ export const updateUser = async(req, res) => {
     }
 
     if (email) {
-        let emailExist = await User.findOne({ where: { 'email': email } });
-        console.log(emailExist.id, id);
-        if(emailExist && emailExist.id != id) {
-            return res.status(401).json({error: 'El correo ya existe.'});
-        } else if (emailExist && emailExist.id === id) {
-            console.log('Acción permitida.');
-        } else {
-            user.email = email;
-        }
+        user.email = email;
     }
 
-    if (!staffId) {
+    if (staffId == 0) {
         user.staffId = null;
     } else {
         user.staffId = staffId;
@@ -122,6 +114,7 @@ export const updateUser = async(req, res) => {
 
 export const updateContactStatusUser = async(req, res) => {
     const { id, contact_status } = req.body;
+    
 
     let message = '';
 

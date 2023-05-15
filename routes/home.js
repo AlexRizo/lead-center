@@ -11,6 +11,6 @@ router.get('/leads/new', role, addLeadPage);
 router.get('/leads/my-leads', myLeadPage);
 
 router.get('/administration', role, adminPage);
-router.get('/administration/view/saler/:id', role, viewAdminPage);
+router.get('/administration/view/seller/:id', role, viewAdminPage);
 
 export default router;

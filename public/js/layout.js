@@ -15,7 +15,6 @@ window.addEventListener('load', () => {
     const addNewpage = document.getElementById('add-lead')
 
     if (localStorage.getItem('ur') != 1) {
-        console.log(localStorage.getItem('ur'));
         adminPage.classList.toggle('hidden');
         addNewpage.classList.toggle('hidden');
     }

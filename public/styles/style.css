@@ -229,18 +229,18 @@ display: none !important;
     word-wrap: break-word;
 }
 
-.saler {
+.seller {
     width: 300px;
     word-wrap: break-word;
     font-size: 14px;
 }
 
-.saler-note {
+.seller-note {
     margin: 5px 0 0 0;
     white-space: initial;
 }
 
-.saler-title {
+.seller-title {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -384,7 +384,7 @@ display: none !important;
 }
 
 /* * SELLERS */
-.salers-data {
+.sellers-data {
     width: 1080px;
 }
 
