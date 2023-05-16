@@ -1,4 +1,4 @@
-<div class="section admin">
+<div class="section administration">
     <div class="cards-content">
         <div class="principal-info notes-section">
             <% if (sr === 3) { %>
@@ -39,7 +39,7 @@
                         <% users.forEach(user => { %>
                             <div class="mini-table-row pointer" onclick="viewAdmin('<%= user.id %>')">
                                 <nav class="mini-table-body-item"><%= user.name %></nav>
-                                <nav class="mini-table-body-item"><%= user.email %></nav>
+                                <nav class="mini-table-body-item email"><%= user.email %></nav>
                                 <nav class="mini-table-body-item"><%= user.Role.name %></nav>
                                 <nav class="mini-table-body-item"><%= user.status === false ? 'Inactivo' : 'Activo' %></nav>
                             </div>

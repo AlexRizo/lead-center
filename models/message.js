@@ -14,6 +14,10 @@ Message.init(
             type: new DataTypes.STRING(500),
             allowNull: false,
         },
+        message: {
+            type: new DataTypes.STRING(500),
+            allowNull: false,
+        },
     },
     {
         tableName: 'messages',

@@ -20,6 +20,18 @@ form.addEventListener('submit', (ev) => {
     return socket.emit('new-alert', formData);
 });
 
+const createNotes = (messages = {}) => {
+    messages.forEach(message => {
+        noteSection.innerHTML += `
+        <div class="card admin">
+            <div class="note">
+                <nav class="note-title">Usuarios Inactivos:</nav>
+                <p>Los usuarios inactivos no tienen acceso al sistema.</p>
+            </div>
+        </div>`;
+    });
+}
+
 const viewAdmin = (id) => {
     window.location = `${ url }/administration/view/seller/${ id }?tkn=${ token }`;
 }
@@ -30,21 +42,8 @@ const viewLead = (id) => {
 
 const init = async() => {
     // TODO: ****
+    // ! Sockets zone;
     socket.emit('get-admin-notes');
-
-    // socket.on('send-admin-notes', ({ messages }) => {
-    //     messages.forEach(message => {
-    //         noteSection.innerHTML += `
-    //         <div class="card admin">
-    //             <div class="note">
-    //                 <nav class="note-title">Usuarios Inactivos:</nav>
-    //                 <p>Los usuarios inactivos no tienen acceso al sistema.</p>
-    //             </div>
-    //         </div>`;
-    //     });
-    // })
-
-    // // ! Sockets zone;
     // socket.on('send-alert', ({ message }) => {
     //     const note = document.createElement('div');
     //     note.className = 'card admin';

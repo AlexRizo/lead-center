@@ -67,8 +67,12 @@ h1 {
 }
 
 /*? Global  */
+.email {
+    line-break: anywhere;
+}
+
 .hidden {
-display: none !important;
+    display: none !important;
 }
 
 .input {
@@ -360,6 +364,10 @@ display: none !important;
     font-weight: 500;
 }
 
+.mini-table-row {
+    text-align: center;
+}
+
 .mini-table-row:hover {
     background: var(--selected-color);
 }
@@ -419,4 +427,51 @@ display: none !important;
 
 .note-title {
     font-weight: 500;
+}
+
+
+@media (max-width: 1700px   ) {
+    .principal {
+        width: 250px;
+    }
+
+    .seller {
+        width: 250px;
+    }
+    
+    .section {
+        max-width: 1024px;
+    }
+
+    .table-item {
+        width: 145px;
+    }
+
+    .lead-data {
+        width: 900px
+    }
+
+    .lead-data {
+        width: 750px
+    }
+
+    .admin {
+        width: 250px
+    }
+    
+    .sellers-data {
+        width: 750px;
+    }
+
+    .details {
+        flex-direction: column;
+    }
+
+    .user-principal {
+        width: 250px;
+    }
+
+    .user-data {
+        width: 750px;
+    }
 }

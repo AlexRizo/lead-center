@@ -46,7 +46,6 @@ router.put('/update/:id', [
     check('email', 'El email no es correcto.').isEmail(),
     check('city', 'la cuidad es obligatoria.').not().isEmpty(),
     check('phone_number', 'El teléfono es obligatorio.').not().isEmpty(),
-    check('phone_number', 'El teléfono no es valido.').isMobilePhone(),
     check('reason', 'El motivo es obligatorio.').not().isEmpty(),
     check('date_contact', 'la fecha de contacto es obligatoria.').not().isEmpty(),
     check('contact_status', 'Dato incorrecto').isNumeric(),
