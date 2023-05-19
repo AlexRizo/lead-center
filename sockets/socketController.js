@@ -3,6 +3,7 @@ import { validateJWT } from "../jwt/jwt.js";
 import User from "../models/user.js";
 import Message from "../models/message.js";
 
+// * Leads
 const updateLead = async(id, lead = {}) => {
     if (lead) {
         return await User.update(lead, { where: { id } });
@@ -11,12 +12,17 @@ const updateLead = async(id, lead = {}) => {
     }
 }
 
+// * Messages
 const createMessage = async(message = {}) => {
     await Message.create(message);
 }
 
 const getMessages = async() => {
     return await Message.findAll();
+}
+
+const deleteMessage = async(id) => {
+    await Message.destroy({ where: { id } });
 }
 
 const socketController = async(socket = new Socket(), io) => {
@@ -41,6 +47,11 @@ const socketController = async(socket = new Socket(), io) => {
         await createMessage(message);
         return io.emit('send-admin-notes', { messages: await getMessages() });
     });
+
+    socket.on('delete-note', async(id) => {
+        await deleteMessage(id);
+        return io.emit('send-admin-notes', { messages: await getMessages() });
+    })
 }
 
 export default socketController;

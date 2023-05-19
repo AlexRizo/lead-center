@@ -1,25 +1,27 @@
 <div class="section administration">
     <div class="cards-content">
-        <div class="principal-info notes-section">
+        <div class="principal-info">
             <% if (sr === 3) { %>
                 <form class="card admin">
                     <div class="notes-title">
                         <h4>Nuevo mensaje</h4>
-                        <input class="input input-form" type="text" name="name"></input>
+                        <input class="input input-form" type="text" name="name">
                         <textarea class="input input-form" rows="10" name="message"></textarea>
                         <button class="btn btn-send-admin-note" type="submit">Enviar</button>
                     </div>
                 </form>
             <% } %>
-            <div class="card admin">
-                <div class="notes-title">
-                    <h4>Notas</h4>
+            <div  class="notes-section">
+                <div class="card admin">
+                    <div class="notes-title">
+                        <h4>Notas</h4>
+                    </div>
                 </div>
-            </div>
-            <div class="card admin">
-                <div class="note">
-                    <nav class="note-title">Usuarios Inactivos:</nav>
-                    <p>Los usuarios inactivos no tienen acceso al sistema.</p>
+                <div class="card admin">
+                    <div class="note">
+                        <nav class="note-title">Usuarios Inactivos:</nav>
+                        <p>Los usuarios inactivos no tienen acceso al sistema.</p>
+                    </div>
                 </div>
             </div>
         </div>

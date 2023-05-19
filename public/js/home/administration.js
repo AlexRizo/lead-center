@@ -1,8 +1,8 @@
-const form = document.querySelector('form') || null;
 const noteSection = document.querySelector('.notes-section');
+const form = document.querySelector('form') || document.createElement('form');
 
 form.addEventListener('submit', (ev) => {
-    ev.preventDefault()
+    ev.preventDefault();
     
     const inputs = document.querySelectorAll('.input');
     const formData = {};
@@ -15,8 +15,6 @@ form.addEventListener('submit', (ev) => {
         }
     }
 
-    console.log(formData);
-
     return socket.emit('new-alert', formData);
 });
 
@@ -25,11 +23,20 @@ const createNotes = (messages = {}) => {
         noteSection.innerHTML += `
         <div class="card admin">
             <div class="note">
-                <nav class="note-title">Usuarios Inactivos:</nav>
-                <p>Los usuarios inactivos no tienen acceso al sistema.</p>
+                <nav class="note-title">${ message.name }</nav>
+                <p>${ message.message }</p>
+                <button class="btn btn-delete" onclick="deleteNote(${ message.id })">Eliminar</button>
             </div>
         </div>`;
     });
+}
+
+const deleteNote = (id) => {
+    socket.emit('delete-note', id);
+    sendNotification('Eliminando', 'Eliminando la nota...');
+    setTimeout(() => {
+        location.reload();
+    }, 5500);
 }
 
 const viewAdmin = (id) => {
@@ -41,22 +48,12 @@ const viewLead = (id) => {
 }
 
 const init = async() => {
-    // TODO: ****
     // ! Sockets zone;
     socket.emit('get-admin-notes');
-    // socket.on('send-alert', ({ message }) => {
-    //     const note = document.createElement('div');
-    //     note.className = 'card admin';
 
-    //     note.innerHTML = `
-    //     <div class="card admin">
-    //         <div class="note">
-    //             <nav class="note-title">Usuarios Inactivos:</nav>
-    //             <p>Los usuarios inactivos no tienen acceso al sistema.</p>
-    //         </div>
-    //     </div>
-    //     `;
-    // });
+    socket.on('send-admin-notes', async({ messages }) => {
+        createNotes(messages);
+    });
 }
 
 const main = async() => {

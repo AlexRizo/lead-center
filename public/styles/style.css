@@ -32,6 +32,10 @@ a {
     color: black;
 }
 
+label {
+    margin-bottom: 5px;
+}
+
 h1 {
     font-size: 20px;
 }
@@ -80,7 +84,6 @@ h1 {
     border: 1px solid var(--border-input-color);
     outline: 0 none;
     padding: 10px 15px;
-    margin-top: 5px;
     width: 250px;
 }
 
@@ -89,17 +92,38 @@ h1 {
     border-color:  var(--sec-color);
 }
 
+.input-action {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
 .btn {
     padding: 10px;
     background: var(--sec-color);
     outline: 0 none;
     border: none;
     cursor: pointer;
+    text-align: center;
+}
+
+.bt-contact {
+
+}
+
+.btn-delete {
+    background: #cf4141;
+    color: white;
 }
 
 .btn:hover {
     background: var(--sec-color-hover);
     outline: 1px solid var(--sec-color);
+}
+
+.btn-delete:hover {
+    background: #b75454;
+    outline: 1px solid #cf4141;
 }
 
 .pointer {
@@ -419,6 +443,8 @@ h1 {
 
 .notes-section {
     gap: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .note {

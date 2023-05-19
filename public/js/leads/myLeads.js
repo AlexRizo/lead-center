@@ -92,7 +92,7 @@ const init = async() => {
             sendNotification('Ha ocurrido un error', `${ error } No se han podido cargar los datos.`);
             return console.error(error);
         }
-
+        set
         if (leads.length > 0) {
             contactedTable.hidden = false;
             contactedTitle.hidden = true;

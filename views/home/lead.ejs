@@ -51,12 +51,18 @@
                     </div>
                     <div class="input-content">
                         <label for="phone_number">Número de Teléfono</label>
-                        <input class="input input-form" name="phone_number" id="phone_number" maxlenght="15" type="tel" required placeholder="+523125479898" value="<%= lead.phone_number %>"/>
+                        <div class="input-action">
+                            <input class="input input-form" name="phone_number" id="phone_number" maxlenght="15" type="tel" required placeholder="Número de teléfono" value="<%= lead.phone_number %>"/>
+                            <a class="btn btn-contact" href="https://wa.me/<%= lead.phone_number.replace(/[^\w]/gi, '') %>" target="_blank" rel="noopener noreferrer">Contactar</a>
+                        </div>
                     </div>
                 </div>
                 <div class="input-content">
                     <label for="email">Correo</label>
-                    <input name="email" class="input input-form" type="email" id="email" maxlength="100" required placeholder="lead@email.com" value="<%= lead.email %>"/>
+                    <div class="input-action">
+                        <input name="email" class="input input-form" type="email" id="email" maxlength="100" required placeholder="lead@email.com" value="<%= lead.email %>"/>
+                        <a class="btn btn-contact" href="mailto:<%= lead.email %>">Contactar</a>
+                    </div>
                 </div>
                 <div class="inputs-content">
                     <div class="input-content">
