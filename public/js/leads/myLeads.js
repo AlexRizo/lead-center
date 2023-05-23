@@ -23,8 +23,8 @@ const createTable = (table, leads = {}, row) => {
         table.innerHTML += `
         <a class="mini-table-row ${ row }" href="${ url }/leads/view/${ lead.id }?tkn=${ token }">
             <nav class="mini-table-body-item">${ lead.name }</nav>
-            <nav class="mini-table-body-item">${ lead.email }</nav>
-            <nav class="mini-table-body-item">${ lead.saler_note || '-------------' }</nav>
+            <nav class="mini-table-body-item email">${ lead.email }</nav>
+            <nav class="mini-table-body-item">${ lead.Platform.name}</nav>
             <nav class="mini-table-body-item">${ status[lead.contact_status] }</nav>
         </a>
         `; 
@@ -92,7 +92,7 @@ const init = async() => {
             sendNotification('Ha ocurrido un error', `${ error } No se han podido cargar los datos.`);
             return console.error(error);
         }
-        set
+        
         if (leads.length > 0) {
             contactedTable.hidden = false;
             contactedTitle.hidden = true;

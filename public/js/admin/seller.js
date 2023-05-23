@@ -28,7 +28,7 @@ form.addEventListener('submit', (ev) => {
         sendNotification('Datos Enviados', message);
         setTimeout(() => {
             location.reload();
-        }, 5300)
+        }, 5300);
     })
 });
 

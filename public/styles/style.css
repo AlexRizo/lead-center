@@ -79,6 +79,20 @@ h1 {
     display: none !important;
 }
 
+.input-for-modal {
+    background: none;
+    border: 1px solid var(--border-input-color);
+    outline: 0 none;
+    padding: 10px 15px;
+    width: 250px;
+    resize: none;
+}
+
+.input-for-modal:focus {
+    outline: 1px solid var(--sec-color);
+    border-color:  var(--sec-color);
+}
+
 .input {
     background: none;
     border: 1px solid var(--border-input-color);
@@ -107,8 +121,9 @@ h1 {
     text-align: center;
 }
 
-.bt-contact {
-
+.btn-cancel {
+    background: #767676;
+    color: white;
 }
 
 .btn-delete {
@@ -126,6 +141,11 @@ h1 {
     outline: 1px solid #cf4141;
 }
 
+.btn-cancel:hover {
+    background: #a6a6a6;
+    outline: 1px solid #767676;
+}
+
 .pointer {
     cursor: pointer;
 }
@@ -139,6 +159,36 @@ h1 {
     border: 1px solid var(--border-card-color);
     border-radius: 5px;
     padding: 10px;
+}
+
+.modal {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-background {
+    background: rgba(0, 0, 0, 0.300);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+.modal-card{
+    margin: auto;
+    position: absolute;
+    z-index: 2;
+    margin-bottom: 0 -400px;
+}
+
+.modal-actions {
+    padding-top: 10px;
 }
 
 /** Barra de navegación / menú */
@@ -272,6 +322,7 @@ h1 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 .cards-content {
@@ -500,4 +551,41 @@ h1 {
     .user-data {
         width: 750px;
     }
+}
+
+/* Adnimaciones */
+.modal-animation {
+    animation-name: show;
+    animation-duration: .8s;
+    animation-timing-function: ease-out;
+}
+
+.card-animation {
+    animation-name: card;
+    animation-duration: .6s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes show {
+    from {
+        opacity: 0%;
+    }
+
+    to {
+        opacity: 100%;
+    }
+}
+
+@keyframes card {
+    from {
+        margin-bottom: 400px;
+        opacity: 0;
+    }
+
+
+    to {
+        margin-bottom: 0;
+        opacity: 100%;
+    }
+
 }

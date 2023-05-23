@@ -3,9 +3,9 @@ import sequelize from '../database/database.js';
 import Staff from './staff.js';
 import User from './user.js';
 
-class SellerNotes extends Model { }
+class SellerNote extends Model { }
   
-SellerNotes.init(
+SellerNote.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -13,7 +13,7 @@ SellerNotes.init(
             primaryKey: true,
         },
         name: {
-            type: new DataTypes.STRING(100),
+            type: new DataTypes.STRING(500),
             allowNull: false,
         },
         userId: {
@@ -25,7 +25,7 @@ SellerNotes.init(
             allowNull: true,
         },
         createdAt: {
-            type: DataTypes.TIME,
+            type: DataTypes.DATE,
         }
     },
     {
@@ -34,11 +34,11 @@ SellerNotes.init(
     },
 );
 
-Staff.hasMany(SellerNotes, { foreignKey: 'staffId', targetKey:'id', as:'asigned' });
-SellerNotes.belongsTo(Staff);
+Staff.hasMany(SellerNote, { foreignKey: 'staffId', targetKey:'id' });
+SellerNote.belongsTo(Staff);
 
-User.hasMany(SellerNotes, { foreignKey: 'userId', targetKey:'id', as:'user' });
-SellerNotes.belongsTo(User);
+User.hasMany(SellerNote, { foreignKey: 'userId', targetKey:'id' });
+SellerNote.belongsTo(User);
 
 
-export default SellerNotes;
+export default SellerNote;

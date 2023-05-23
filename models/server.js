@@ -11,6 +11,7 @@ import homeRouter from "../routes/home.js";
 import authRouter from "../routes/auth.js";
 import userRouter from "../routes/user.js";
 import staffRouter from "../routes/staff.js";
+import sellerRouter from "../routes/sellerNote.js";
 
 import expressLayouts from "express-ejs-layouts";
 import socketController from "../sockets/socketController.js";
@@ -29,7 +30,8 @@ class Server {
             auth: '/auth',
             user: '/users',
             staff: '/staff',
-            team: '/teams'
+            team: '/teams',
+            seller: '/sellers'
         }
 
         // Conectar DB;
@@ -79,6 +81,7 @@ class Server {
         this.app.use(this.paths.home, homeRouter);
         this.app.use(this.paths.user, userRouter);
         this.app.use(this.paths.staff, staffRouter);
+        this.app.use(this.paths.seller, sellerRouter);
 
         this.app.get('/login', (req, res) => {
             res.sendFile(path.join(__dirname, '../public/auth', 'login.html'));

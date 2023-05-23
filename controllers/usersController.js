@@ -1,6 +1,6 @@
 import formatDate from "../helpers/formDate.js";
-import Staff from "../models/staff.js";
 import User from "../models/user.js";
+import Platform from "../models/platform.js";
 
 export const getUsers = async(req, res) => {
     const ur = req.header('ur')
@@ -25,13 +25,13 @@ export const getMyUsers = async(req, res) => {
 
     switch (status) {
         case "0":
-            leads = await User.findAll({ where: { staffId: id, contact_status: 0 } });
+            leads = await User.findAll({ where: { staffId: id, contact_status: 0 }, include: { model: Platform } });
             break;
         case "1":
-            leads = await User.findAll({ where: { staffId: id, contact_status: 1 } });            
+            leads = await User.findAll({ where: { staffId: id, contact_status: 1 }, include: { model: Platform } });            
             break;
         case "2":
-            leads = await User.findAll({ where: { staffId: id, contact_status: 2 } });            
+            leads = await User.findAll({ where: { staffId: id, contact_status: 2 }, include: { model: Platform } });            
             break;
     }
     

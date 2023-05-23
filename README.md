@@ -8,6 +8,10 @@ npm install
 
 #
 
+## Notas de la versión ```2.7.6```
+* Se ha eliminado la opción de añadir ``Nota del vendedor`` y se han añadido las ``Notas del vendedor``.
+* Se ha añadido la posibilidad de añadir varias notas para un ``Lead``.
+
 ## Notas de la versión ```2.6.4```
 * Se ha añadido la posibilidad de eliminar las alertas en la sección de ``administración``.
 * Se corrigió un problema que afectaba el formulario de crear nota en la sección de ``administración``.

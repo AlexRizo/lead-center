@@ -27,11 +27,11 @@
             </div>
             <div class="card seller">
                 <div class="seller-title">
-                    <h4>Nota del vendedor:</h4>
-                    <i class="fa-solid fa-pen-to-square pointer edit-seller-note" style="color: #000000;"></i>
+                    <h4>Notas del vendedor</h4>
+                    <button type="button" class="btn" onclick="openModal()">Nueva Nota</button>
                 </div>
-                <p class="seller-note"><%= lead.saler_note %></p>
             </div>
+            <div class="notes-section"></div>
         </div>
         <form class="card lead-data lead-card">
             <div class="card-header">
@@ -109,6 +109,20 @@
                 <button class="btn btn-form contacted" type="button">Marcar Como Contactado</button>
             </div>
         </form>
+    </div>
+</div>
+
+<div class="modal hidden">
+    <div class="modal-background modal-animation" onclick="quitModal()"></div>
+    <div class="card modal-card card-animation">
+        <div class="input-content">
+            <label for="name">Deja una nueva nota:</label>
+            <textarea class="input-for-modal input-form" name="note" id="name" cols="60" rows="10" maxlength="500" placeholder="Deja una nota..."></textarea>
+        </div>
+        <div class="modal-actions">
+            <button type="submit" class="btn btn-add-seller-note">Crear</button>
+            <button class="btn btn-cancel" onclick="quitModal()">Cancelar</button>
+        </div>
     </div>
 </div>
 

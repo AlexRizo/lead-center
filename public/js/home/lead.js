@@ -7,13 +7,67 @@ const btnFollow = document.querySelector('.follow');
 const btnSave = document.querySelector('.submit');
 const id = document.getElementById('id');
 const inputs = document.querySelectorAll('.input');
-const salerCard = document.querySelector('.seller');
-const editSalerNote = document.querySelector('.edit-seller-note');
-const salerNote = document.querySelector('.seller-note');
+const sellerCard = document.querySelector('.seller');
+const editsellerNote = document.querySelector('.edit-seller-note');
+const sellerNote = document.querySelector('.seller-note');
 
-// ? Elementos creados;
-const salerInput = document.createElement('textarea');
-const saveSalerNote = document.createElement('button');
+// ? Modal
+const modal = document.querySelector('.modal');
+const btnAddNote = document.querySelector('.btn-add-seller-note');
+const note = document.querySelector('.input-for-modal');
+
+// ? Notes
+const divNotes = document.querySelector('.notes-section');
+
+const openModal = () => {
+    modal.classList.toggle('hidden');
+}
+
+const quitModal = () => {
+    modal.classList.toggle('hidden');
+}
+
+const formatDate = (date) => {
+    const fullDate = new Date(date)
+
+    const newDate = {};
+
+    const day = fullDate.getDate();
+    const month = fullDate.getMonth() + 1;
+    const year = fullDate.getFullYear();
+
+    if (day < 10) {
+        newDate.day = '0' + day;
+    } else {
+        newDate.day = day
+    }
+
+    if (month < 10) {
+        newDate.month = '0' + month;
+    } else {
+        newDate.day = month
+    }
+
+    newDate.year = year
+    
+    return newDate;
+}
+
+const createNotes = (notes = {}) => {
+    divNotes.innerHTML = '';
+    
+    notes.forEach(note => {
+        let date = formatDate(note.createdAt)
+        divNotes.innerHTML += `
+            <div class="card seller">
+                <div class="seller-note">
+                    <h4>${ date.day } / ${ date.month } / ${ date.year }</h4>
+                    <p>${ note.name }</p>
+                </div>
+            </div>
+        `;
+    })
+}
 
 const createOptionsforSelect = (options, select) => {
     return options.forEach(option => {
@@ -24,33 +78,6 @@ const createOptionsforSelect = (options, select) => {
         }
     });
 }
-
-const createSalerNoteActions = () => {
-    salerInput.style.width = '100%';
-    salerInput.style.height = 'fit-content';
-    salerInput.style.padding = '5px';
-    salerInput.style.resize = 'none';
-    salerInput.maxLength = '500';
-    salerInput.rows= '15';
-    salerInput.value = salerNote.textContent
-    salerInput.className = 'input';
-
-    saveSalerNote.style.margin = '5px 0 0 0';
-    saveSalerNote.className = 'btn';
-    saveSalerNote.innerText = 'Guardar';
-
-    salerNote.innerText = '';
-    salerNote.appendChild(salerInput);
-    salerCard.appendChild(saveSalerNote);
-}
-
-saveSalerNote.addEventListener('click', () => {
-    socket.emit('save-seller-note', { id: id.value }, { saler_note: salerInput.value } );
-})
-
-editSalerNote.addEventListener('click', (ev) => {
-    createSalerNoteActions();
-});
 
 const setContactStatus = (status = 0) => {
     const formData = { 
@@ -69,7 +96,7 @@ const setContactStatus = (status = 0) => {
     .then(response => response.json())
     .then(({ message, error }) => {
         if (error) {
-            return sendNotification("Ha Ocurrido un Error", error);
+            return sendNotification("Ha ocurrido un error", error);
         }
 
         sendNotification("Datos Enviados", message);
@@ -87,6 +114,34 @@ btnContact.addEventListener('click', () => {
     setContactStatus(2)
 });
 
+btnAddNote.addEventListener('click', () => {
+    if (note.value.length <= 0) {
+        return sendNotification('Ha ocurrido un error', 'La nota no puede estar vacía.');
+    }
+
+    fetch(`${ url }/sellers/create/note`, {
+        method: 'POST',
+        headers: {
+            tkn: token,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: note.value, userId: id.value })
+    })
+    .then(response => response.json())
+    .then(({ message, error }) => {
+        if (error) {
+            console.error(error);
+            return sendNotification('Ha ocurrido un error', error)
+        }
+
+        quitModal();
+        note.value = '';
+        
+        sendNotification('Nota enviada', message);
+        return socket.emit('new-note', { id: id.value });
+    })
+    .catch(console.error);
+});
 
 form.addEventListener('submit', (ev) => {
     ev.preventDefault()
@@ -120,7 +175,6 @@ form.addEventListener('submit', (ev) => {
 });
 
 const init = async() => {
-    // TODO: ****
     await fetch(`${ url }/staff/get`, {
         method: 'GET',
         headers: { tkn: token },
@@ -139,7 +193,21 @@ const init = async() => {
             btnSave.hidden = false;
         }
     })
-    .catch(console.error());
+    .catch(console.error);
+
+    fetch(`${ url }/sellers/get/lead-notes`, {
+        method: 'GET',
+        headers: { tkn: token, leadId: id.value }
+    })
+    .then(response => response.json())
+    .then(({ notes, error }) => {
+        if (error) {
+            sendNotification('Ha ocurrido un error', `${ error }`);
+            return console.error(error);
+        }
+        createNotes(notes);
+    })
+    .catch(console.error);
 
     // ! Sockets zone;
     socket.on('seller-note-saved', ({ id }) => {
@@ -147,6 +215,10 @@ const init = async() => {
         setTimeout(() => {
             location.reload();
         }, 5300);
+    });
+    
+    socket.on('update-notes', ({ notes }) => {
+        createNotes(notes);
     });
 }
 
