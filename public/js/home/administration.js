@@ -1,6 +1,10 @@
 const noteSection = document.querySelector('.notes-section');
 const form = document.querySelector('form') || document.createElement('form');
 
+const ur = localStorage.getItem('ur');
+
+console.log(ur);
+
 form.addEventListener('submit', (ev) => {
     ev.preventDefault();
     
@@ -25,7 +29,9 @@ const createNotes = (messages = {}) => {
             <div class="note">
                 <nav class="note-title">${ message.name }</nav>
                 <p>${ message.message }</p>
-                <button class="btn btn-delete" onclick="deleteNote(${ message.id })">Eliminar</button>
+                ${
+                    (ur == 3) ? '<button class="btn btn-delete" onclick="deleteNote('+ message.id +')">Eliminar</button>' : ''
+                }
             </div>
         </div>`;
     });

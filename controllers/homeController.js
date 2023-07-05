@@ -54,8 +54,9 @@ export const adminPage = async(req, res) => {
     }
 
     const leads = await User.findAll({ where: { staffId: null }, include: [Origin, Platform] });
+    const completed = await User.findAll({ where: { contact_status: 2 }, include: [Staff, Origin] });
     
-    return res.render('home/administration', { users, leads, sr: SR })
+    return res.render('home/administration', { users, leads, completed, sr: SR })
 }
 
 export const viewAdminPage = async(req, res) => {

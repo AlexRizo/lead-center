@@ -72,6 +72,29 @@
                     </div>
                 </div>
             </div>
+            <div class="card completed-leads">
+                <div class="card-header">
+                    <h3 class="card-title">Prospectos Contactados</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mini-table completed">
+                        <div class="mini-table-head" id="completed">
+                            <nav class="mini-table-head-item">Nombre</nav>
+                            <nav class="mini-table-head-item">Campaña</nav>
+                            <nav class="mini-table-head-item">Asignado a</nav>
+                            <nav class="mini-table-head-item">Estado</nav>
+                        </div>
+                        <% completed.forEach(lead => { %>
+                            <div class="mini-table-row pointer" onclick="viewLead('<%= lead.id %>')">
+                                <nav class="mini-table-body-item"><%= lead.name %></nav>
+                                <nav class="mini-table-body-item"><%= lead.Origin.name %></nav>
+                                <nav class="mini-table-body-item"><%= lead.Staff.name %></nav>
+                                <nav class="mini-table-body-item">Contactado</nav>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

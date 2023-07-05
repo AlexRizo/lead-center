@@ -8,6 +8,10 @@ npm install
 
 #
 
+## Notas de la versión ```2.8.7```
+* Se ha eliminado la opción de eliminar una ``Alerta`` para los usuarios que no eran administradores.
+* Se ha añadido una nueva tabla que muestra los prospectos contactados en la sección de ``administración``.
+
 ## Notas de la versión ```2.7.6```
 * Se ha eliminado la opción de añadir ``Nota del vendedor`` y se han añadido las ``Notas del vendedor``.
 * Se ha añadido la posibilidad de que los vendedores puedan agregar varias notas en un ``Lead``.
