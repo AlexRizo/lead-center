@@ -8,6 +8,10 @@ npm install
 
 #
 
+## Notas de la versión ```2.9.7```
+* Se ha agregado una nueva sección llamada ``Contactados y en seguimiento``.
+* Se ha movido la tabla de contactados a la sección ``Contactados y en seguimiento``.
+
 ## Notas de la versión ```2.8.7```
 * Se ha eliminado la opción de eliminar una ``Alerta`` para los usuarios que no eran administradores.
 * Se ha añadido una nueva tabla que muestra los prospectos contactados en la sección de ``administración``.

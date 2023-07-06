@@ -11,11 +11,13 @@ if (!token) {
 let socket;
 
 window.addEventListener('load', () => {
-    const adminPage = document.getElementById('admin')
-    const addNewpage = document.getElementById('add-lead')
+    const adminPage = document.getElementById('admin');
+    const ContFollow = document.getElementById('prospect_status');
+    const addNewpage = document.getElementById('add-lead');
 
     if (localStorage.getItem('ur') != 1) {
         adminPage.classList.toggle('hidden');
+        ContFollow.classList.toggle('hidden');
         addNewpage.classList.toggle('hidden');
     }
 })
@@ -27,6 +29,10 @@ const adminSection = () => {
 const addLead = () => {
     window.location = `${ url }/leads/new?tkn=${ token }`;
 }
+
+const adminSection2 = () => {
+    window.location = `${ url }/contacted-following?tkn=${ token }`;
+};
 
 const logout = () => {
     localStorage.removeItem('tkn');
@@ -45,9 +51,9 @@ const connectSocket = async() => {
     socket.on('connect', () => console.log('Socket Online'));
     socket.on('disconnect', () => {
         console.log('Socket Offline')
-        // localStorage.removeItem('tkn');
-        // localStorage.removeItem('ur');
-        // localStorage.removeItem('uid');
+        localStorage.removeItem('tkn');
+        localStorage.removeItem('ur');
+        localStorage.removeItem('uid');
         location.reload();
     });
 }

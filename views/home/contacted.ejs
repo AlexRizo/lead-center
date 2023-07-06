@@ -1,0 +1,59 @@
+<div class="section lead">
+    <div class="cards-content-col">
+        <div class="card lead-data">
+            <div class="card-header">
+                <h3 class="card-title">En Seguimiento</h3>
+            </div>
+            <div class="card-body">
+                <div class="mini-table follow-table">
+                    <div class="mini-table-head" id="table">
+                        <nav class="mini-table-head-item">Nombre</nav>
+                        <nav class="mini-table-head-item">Origen</nav>
+                        <nav class="mini-table-head-item">Asignado a</nav>
+                        <nav class="mini-table-head-item">Estatus</nav>
+                    </div>
+                    <% following.forEach(lead => { %>
+                        <div class="mini-table-row follow-row pointer" onclick="viewLead('<%= lead.id %>')">
+                            <nav class="mini-table-body-item"><%= lead.name %></nav>
+                            <nav class="mini-table-body-item email"><%= lead.Origin.name %></nav>
+                            <nav class="mini-table-body-item"><%= lead.Staff.name %></nav>
+                            <nav class="mini-table-body-item">Seguimiento</nav>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+            <div hidden class="card-footer">
+                <button class="btn btn-form submit" type="submit">Cargar más</button>
+            </div>
+        </div>
+        
+        <div class="card lead-data">
+            <div class="card-header">
+                <h3 class="card-title">Contactados</h3>
+            </div>
+            <div class="card-body">
+                <div class="mini-table contacted-table">
+                    <div class="mini-table-head" id="table">
+                        <nav class="mini-table-head-item">Nombre</nav>
+                        <nav class="mini-table-head-item">Correo</nav>
+                        <nav class="mini-table-head-item">Plataforma</nav>
+                        <nav class="mini-table-head-item">Estatus</nav>
+                    </div>
+                    <% completed.forEach(lead => { %>
+                        <div class="mini-table-row follow-row pointer" onclick="viewLead('<%= lead.id %>')">
+                            <nav class="mini-table-body-item"><%= lead.name %></nav>
+                            <nav class="mini-table-body-item email"><%= lead.Origin.name %></nav>
+                            <nav class="mini-table-body-item"><%= lead.Staff.name %></nav>
+                            <nav class="mini-table-body-item">Contactado</nav>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+            <div hidden class="card-footer">
+                <button class="btn btn-form submit" type="submit">Cargar más</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/home/contacted.js"></script>
