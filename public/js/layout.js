@@ -1,5 +1,5 @@
 const url = (window.location.hostname.includes('localhost')
-            ? 'http://localhost:3000'
+            ? 'http://localhost:8080'
             : 'https://altozano.leadscenter.work');
 
 const token = localStorage.getItem('tkn') || null;
