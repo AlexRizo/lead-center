@@ -23,7 +23,7 @@ const createTable = (table, leads = {}, row) => {
         table.innerHTML += `
         <a class="mini-table-row ${ row }" href="${ url }/leads/view/${ lead.id }?tkn=${ token }">
             <nav class="mini-table-body-item">${ lead.name }</nav>
-            <nav class="mini-table-body-item email">${ lead.email }</nav>
+            <nav class="mini-table-body-item email tbit-4">${ lead.email }</nav>
             <nav class="mini-table-body-item">${ lead.Platform.name}</nav>
             <nav class="mini-table-body-item">${ status[lead.contact_status] }</nav>
         </a>

@@ -8,6 +8,16 @@ npm install
 
 #
 
+## Notas de la versión ```2.10.2```
+* Se ha corregido un problema visual con la barra del menú de navegación.
+* Se ha corregido un problema visual que afectaba la posición de todas las tablas.
+
+## Notas de la versión ```2.10.0```
+* Se han ajustado los estilos para permitir la vista en dispositivos móbiles.
+
+## Notas de la versión ```2.9.9```
+* Se ha corregido un problema que causaba una desconexión repentina del sitio.
+
 ## Notas de la versión ```2.9.7```
 * Se ha agregado una nueva sección llamada ``Contactados y en seguimiento``.
 * Se ha movido la tabla de contactados a la sección ``Contactados y en seguimiento``.
@@ -31,8 +41,6 @@ npm install
 ## Notas de la versión ```2.4.2```
 * Se corrigió un problema que impedía actualizar un prospecto de forma manual.
 * Se corrigió un problema que hacía que los prospectos se enviaran sin plataforma desde la url API.
-
-#
 
 ## Notas de la versión ```2.3.1```
 * Se ha corregido un problema relacionado a la tabla de ``prospectos sin asignar``.

@@ -1,6 +1,6 @@
 <div class="section administration">
     <div class="cards-content">
-        <div class="principal-info">
+        <div class="principal-info section-hide-mobile">
             <% if (sr === 3) { %>
                 <form class="card admin">
                     <div class="notes-title">
@@ -34,14 +34,14 @@
                     <div class="mini-table users">
                         <div class="mini-table-head" id="table">
                             <nav class="mini-table-head-item">Nombre</nav>
-                            <nav class="mini-table-head-item">Correo</nav>
+                            <nav class="mini-table-head-item tbit-4">Correo</nav>
                             <nav class="mini-table-head-item">Rol</nav>
-                            <nav class="mini-table-head-item">Estatus</nav>
+                            <nav class="mini-table-head-item">Estado</nav>
                         </div>
                         <% users.forEach(user => { %>
                             <div class="mini-table-row pointer" onclick="viewAdmin('<%= user.id %>')">
                                 <nav class="mini-table-body-item"><%= user.name %></nav>
-                                <nav class="mini-table-body-item email"><%= user.email %></nav>
+                                <nav class="mini-table-body-item email tbit-4"><%= user.email %></nav>
                                 <nav class="mini-table-body-item"><%= user.Role.name %></nav>
                                 <nav class="mini-table-body-item"><%= user.status === false ? 'Inactivo' : 'Activo' %></nav>
                             </div>
@@ -57,14 +57,14 @@
                     <div class="mini-table leads">
                         <div class="mini-table-head" id="table">
                             <nav class="mini-table-head-item">Nombre</nav>
-                            <nav class="mini-table-head-item">Campaña</nav>
+                            <nav class="mini-table-head-item tbit-4">Campaña</nav>
                             <nav class="mini-table-head-item">Plataforma</nav>
                             <nav class="mini-table-head-item">Asignación</nav>
                         </div>
                         <% leads.forEach(lead => { %>
                             <div class="mini-table-row pointer" onclick="viewLead('<%= lead.id %>')">
                                 <nav class="mini-table-body-item"><%= lead.name %></nav>
-                                <nav class="mini-table-body-item"><%= lead.Origin.name %></nav>
+                                <nav class="mini-table-body-item tbit-4"><%= lead.Origin.name %></nav>
                                 <nav class="mini-table-body-item"><%= lead.Platform.name %></nav>
                                 <nav class="mini-table-body-item">Pendiente</nav>
                             </div>

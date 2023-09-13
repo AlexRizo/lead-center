@@ -6,7 +6,7 @@ import Staff from "../models/staff.js";
 import User from "../models/user.js";
 
 export const homePage = async(req, res) => {
-    const leads = await User.findAll({ where: { 'contact_status': 0 } });
+    const leads = await User.findAll({ where: { 'contact_status': 0 }, order: [['staffId', 'ASC']] });
 
     return res.render('home/home', { leads });
 }
@@ -29,15 +29,21 @@ export const leadPage = async(req, res) => {
 }
 
 export const addLeadPage = async(req, res) => {
+    const user = await validateJWT(req.query.tkn)
+
+    if (!user) {
+        return res.status(403).redirect('/403');
+    }
+    
     const staffs = await Staff.findAll({ where: { roleId: [1, 2], status: 1 } });
     const origins = await Origin.findAll();
     const platforms = await Platform.findAll();
 
-    return res.render('leads/addLead', { staffs, origins, platforms });
+    return res.render('home/addLead', { staffs, origins, platforms, user });
 }
 
 export const myLeadPage = async(req, res) => {
-    return res.render('leads/myLeads');
+    return res.render('home/myLeads');
 }
 
 export const adminPage = async(req, res) => {
@@ -74,14 +80,14 @@ export const viewAdminPage = async(req, res) => {
     
     const roles = await Role.findAll();
     
-    res.render('admin/seller', {
+    res.render('home/seller', {
         pending: pendingLeads.count,
         follow: followLeads.count,
         contacted: contactedLeads.count,
         roles,
         user
     });
-}
+} 
 
 export const ContactedAndFollowing = async(req, res) => {
     const following = await User.findAll({ where: { contact_status: 1 }, include: [Staff, Origin] });

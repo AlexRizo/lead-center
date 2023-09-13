@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card user-principal">
+            <div class="card user-principal section-hide-mobile">
                 <div class="seller-note note">
                     <nav class="note-title">Contraseña:</nav>
                     <p>La contraseña debe ser mayor a 6 caracteres. Si se envía vacía, no se actualizará.</p>
@@ -32,7 +32,7 @@
             </div>
             <div class="card-body">
                 <input name="id" type="hidden" id="id" value="<%= user.id %>"/>
-                <div class="inputs-content">
+                <div class="inputs-content fd-col">
                     <div class="input-content">
                         <label for="name">Nombre Completo</label>
                         <input name="name" class="input input-form" type="text" id="name" maxlength="100" required placeholder="Nombre del Vendedor" value="<%= user.name %>"/>
@@ -46,7 +46,7 @@
                     <label for="password">Contraseña</label>
                     <input name="password" class="input input-form" type="password" id="password" maxlength="100" placeholder="Contraseña"/>
                 </div>
-                <div class="inputs-content">
+                <div class="inputs-content fd-col">
                     <div class="input-content">
                         <label for="roleId">Rol</label>
                         <select name="roleId" id="roleId" class="input input-form" required>
@@ -84,4 +84,4 @@
     </div>
 </div>
 
-<script src="/js/admin/seller.js"></script>
+<script src="/js/home/seller.js"></script>

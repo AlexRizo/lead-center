@@ -26,7 +26,7 @@
                     </div>
                     <p class="menu-opt">Inicio</p>
                 </a>
-                <a hidden class="menu-item pointer hidden" id="add-lead" onclick="addLead()">
+                <a class="menu-item pointer" id="add-lead" onclick="addLead()">
                     <div class="menu-opt-icon">
                         <i class="fa-solid fa-user-plus" style="color: black;"></i>
                     </div>
@@ -58,8 +58,13 @@
                 </a>
             </div>
         </nav>
+        <div class="menu-space"></div>
+        <div class="black-screen hidden"></div>
         <div class="content">
             <%-body%>
+            <div class="spawn-menu">
+                Menú
+            </div>
         </div>
     </section>
 </body>

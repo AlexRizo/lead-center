@@ -1,5 +1,5 @@
 const url = (window.location.hostname.includes('localhost')
-            ? 'http://localhost:8080'
+            ? 'http://localhost:3000'
             : 'https://altozano.leadscenter.work');
 
 const token = localStorage.getItem('tkn') || null;
@@ -13,14 +13,28 @@ let socket;
 window.addEventListener('load', () => {
     const adminPage = document.getElementById('admin');
     const ContFollow = document.getElementById('prospect_status');
-    const addNewpage = document.getElementById('add-lead');
+
+    const btnMenu = document.querySelector('.spawn-menu');
+    const blackScreen = document.querySelector('.black-screen');
+    const menu = document.querySelector('.menu');
 
     if (localStorage.getItem('ur') != 1) {
         adminPage.classList.toggle('hidden');
         ContFollow.classList.toggle('hidden');
-        addNewpage.classList.toggle('hidden');
     }
-})
+
+    btnMenu.addEventListener('click', () => {
+        menu.classList.toggle('menu-animation');
+        blackScreen.classList.toggle('hidden');
+        btnMenu.classList.toggle('move-button');
+    })
+
+    blackScreen.addEventListener('click', () => {
+        menu.classList.toggle('menu-animation');
+        blackScreen.classList.toggle('hidden');
+        btnMenu.classList.toggle('move-button');
+    })
+});
 
 const adminSection = () => {
     window.location = `${ url }/administration?tkn=${ token }`;
@@ -51,9 +65,9 @@ const connectSocket = async() => {
     socket.on('connect', () => console.log('Socket Online'));
     socket.on('disconnect', () => {
         console.log('Socket Offline')
-        localStorage.removeItem('tkn');
-        localStorage.removeItem('ur');
-        localStorage.removeItem('uid');
+        // localStorage.removeItem('tkn');
+        // localStorage.removeItem('ur');
+        // localStorage.removeItem('uid');
         location.reload();
     });
 }

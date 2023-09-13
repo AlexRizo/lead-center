@@ -7,7 +7,7 @@ const router = Router();
 router.get('/', homePage);
 
 router.get('/leads/view/:id',  leadPage);
-router.get('/leads/new', role, addLeadPage);
+router.get('/leads/new', addLeadPage);
 router.get('/leads/my-leads', myLeadPage);
 
 router.get('/administration', role, adminPage);

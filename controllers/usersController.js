@@ -9,9 +9,9 @@ export const getUsers = async(req, res) => {
     let leads;
 
     if (ur == 1) {
-        leads = await User.findAll({ where: { contact_status: [0, 1], staffId: uid }, include: { all: true } });
+        leads = await User.findAll({ where: { contact_status: [0, 1], staffId: uid }, include: { all: true }, order: [['date_contact', 'DESC']] });
     } else {
-        leads = await User.findAll({ where: { contact_status: 0 }, include: { all: true } });
+        leads = await User.findAll({ where: { contact_status: 0 }, include: { all: true }, order: [['date_contact', 'DESC']] });
     }
     
     res.json({ leads });
@@ -68,10 +68,6 @@ export const createUserByZapier = async(req, res) => {
 export const createUser = async(req, res) => {
     const user = req.body;
     const staff = req.user;    
-
-    if (staff.roleId === 1) {
-        return res.status(200).json({ error: "Sin permisos", message: 'El prospecto no se ha podido crear.' });
-    }
 
     await User.create(user);
     

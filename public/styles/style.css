@@ -195,12 +195,16 @@ h1 {
 .menu {
     display: flex;
     flex-direction: column;
-    min-width: 250px;
-    max-width: 250px;
+    width: 250px;
     font-size: 14px;
     background: var(--card-color);
     height: 100vh;
     position: fixed;
+}
+
+.menu-space {
+    min-width: 250px;
+    height: auto;
 }
 
 .menu-header {
@@ -239,14 +243,14 @@ h1 {
 /** HOME:  */
 .content {
     width: 100%;
+    padding: 40px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 25px 25px 25px 300px;
 }
 
 .section {
-    max-width: 1400px;
+    width: 1000px;
     display: flex;
     justify-content: center;
 }
@@ -280,7 +284,7 @@ h1 {
 }
 
 .table-item {
-    width: 200px;
+    width: 14.2857%;
     padding: 10px 0;
     text-align: center;
     text-overflow: ellipsis;
@@ -329,12 +333,14 @@ h1 {
     display: flex;
     flex-direction: row;
     gap: 20px;
+    width: inherit;
 }
 
 .cards-content-col {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%;
 }
 
 .profile-img {
@@ -357,7 +363,7 @@ h1 {
 }
 
 .lead-data {
-    width: 1080px;
+    width: 100%;
     white-space: initial;
 }
 
@@ -468,7 +474,7 @@ h1 {
 
 /* * SELLERS */
 .sellers-data {
-    width: 1080px;
+    width: 100%;
 }
 
 .admin {
@@ -480,7 +486,7 @@ h1 {
 }
 
 .user-data {
-    width: 1000px;
+    width: 100%;
 }
 
 .details {
@@ -506,6 +512,30 @@ h1 {
     font-weight: 500;
 }
 
+.spawn-menu {
+    position: fixed;
+    left: -10px;
+    bottom: 10px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.302);
+    animation: menu 2s ease 2;
+    display: none;
+    z-index: 1;
+    transition: .6s;
+}
+
+.black-screen {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.295);
+    animation: blackScreen .5s;
+}
+
+.section-hide-desktop {
+    display: none;
+}
 
 @media (max-width: 1700px   ) {
     .principal {
@@ -520,24 +550,8 @@ h1 {
         max-width: 1024px;
     }
 
-    .table-item {
-        width: 145px;
-    }
-
-    .lead-data {
-        width: 900px
-    }
-
-    .lead-data {
-        width: 750px
-    }
-
     .admin {
         width: 250px
-    }
-    
-    .sellers-data {
-        width: 750px;
     }
 
     .details {
@@ -547,10 +561,93 @@ h1 {
     .user-principal {
         width: 250px;
     }
+}
 
-    .user-data {
-        width: 750px;
+@media (max-width: 1300px) {
+    .section {
+        max-width: none;
+        width: 100%
     }
+
+    .tbit-2, .tbit-5 {
+        display: none;
+    }
+
+    .table-item {
+        width: 20%;
+    }
+
+    .lead-data {
+        width: 100%;
+    }
+
+    .cards-content {
+        width: inherit;
+    }
+
+    .principal, .section-hide-mobile {
+        display: none;
+    }
+
+    .section-hide-desktop {
+        display: initial;
+    }
+
+    .cards-content {
+        flex-direction: column-reverse;
+    }
+
+    .seller {
+        width: 100%;
+    }
+
+    .fd-col {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 900px) {
+    .section {
+        max-width: none;
+        width: 100%
+    }
+
+    .menu {
+        left: -100%;
+        transition: .7s;
+        z-index: 2;
+    }
+
+    .menu-space {
+        display: none;
+    }
+
+    .tbit-4, .tbit-3 {
+        display: none;
+    }
+
+    .table-item {
+        width: 33.3333%;
+    }
+
+    .menu-animation {
+        left: 0;
+        transition: .7s;
+    }
+
+    .spawn-menu {
+        display: initial;
+    }
+
+    .move-button {
+        left: -100px;
+        transition: .7s;
+    }
+
+    .mini-table-body-item, .mini-table-head-item {
+        width: 33.3333%;
+    }
+
 }
 
 /* Adnimaciones */
@@ -588,4 +685,36 @@ h1 {
         opacity: 100%;
     }
 
+}
+
+@keyframes menu {
+    0% {
+        transform: translate(0px);
+    }
+    
+    20% {
+        transform: translate(10px);
+    }
+
+    40% {
+        transform: translate(-10px);
+    }
+
+    60% {
+        transform: translate(10px);
+    }
+
+    80% {
+        transform: translate(0px);
+    }
+}
+
+@keyframes blackScreen {
+    from {
+        background: rgba(0, 0, 0, 0);
+    }
+
+    to {
+        background: rgba(0, 0, 0, 0.295);
+    }
 }

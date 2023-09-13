@@ -12,13 +12,13 @@ const createTable = (leads = {}) => {
     leads.forEach(lead => {
         table.innerHTML += `
         <a href="${ url }/leads/view/${ lead.id }?tkn=${ token }" class="table-body">
-            <nav class="table-item">${ lead.name }</nav>
-            <nav class="table-item">${ lead.email }</nav>
-            <nav class="table-item">${ lead.city }</nav>
-            <nav class="table-item">${ lead.phone_number }</nav>
-            <nav class="table-item">${ lead.Origin.name }</nav>
-            <nav class="table-item">${ lead.date_contact }</nav>
-            <nav class="table-item">${ ((lead.staffId) != null ? lead.Staff.name : 'Sin asignar') }</nav>
+            <nav class="table-item tbit-1">${ lead.name }</nav>
+            <nav class="table-item tbit-2">${ lead.email }</nav>
+            <nav class="table-item tbit-3">${ lead.city }</nav>
+            <nav class="table-item tbit-4">${ lead.phone_number }</nav>
+            <nav class="table-item tbit-5">${ lead.Origin.name }</nav>
+            <nav class="table-item tbit-6">${ lead.date_contact }</nav>
+            <nav class="table-item tbit-7">${ ((lead.staffId) != null ? lead.Staff.name : 'Sin asignar') }</nav>
         </a>`; 
     });
 }

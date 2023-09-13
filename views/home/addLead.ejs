@@ -53,13 +53,18 @@
                     <div class="input-content">
                         <label for="staffId">Asignado A *</label>
                         <select name="staffId" id="staffId" class="input input-form" required>
-                            <% staffs.forEach(staff => { %>
-                                <option value="<%= staff.id %>"><%= staff.name %></option>
-                            <% }); %>
+
+                            <% if (user.roleId === 1 || user.roleId === '1') { %>
+                                <option value="<%= user.id %>"><%= user.name %></option>
+                            <% } else { %>
+                                <% staffs.forEach(staff => { %>
+                                    <option value="<%= staff.id %>"><%= staff.name %></option>
+                                <% }); %>
+                            <% } %>
                         </select>
                     </div>
                 </div>
-                <div class="input-content">
+                <div class="input-content hidden">
                     <label for="note">Nota</label>
                     <textarea class="input input-form" name="note" id="note" maxlength="500" cols="30" rows="10" placeholder="Nota..."></textarea>
                 </div>
@@ -71,4 +76,4 @@
     </div>
 </div>
 
-<script src="/js/leads/addLead.js"></script>
+<script src="/js/home/addLead.js"></script>
