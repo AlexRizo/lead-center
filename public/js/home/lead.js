@@ -45,7 +45,7 @@ const formatDate = (date) => {
     if (month < 10) {
         newDate.month = '0' + month;
     } else {
-        newDate.day = month
+        newDate.month = month
     }
 
     newDate.year = year
@@ -82,7 +82,7 @@ const createOptionsforSelect = (options, select) => {
 const setContactStatus = (status = 0) => {
     const formData = { 
         id: id.value,
-        contact_status: status
+        LeadStatusId: status
     };
 
     fetch(`${ url }/users/update/contact-status/${ id.value }`, {

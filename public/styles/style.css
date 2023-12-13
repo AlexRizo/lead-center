@@ -255,6 +255,11 @@ h1 {
     justify-content: center;
 }
 
+.col {
+    flex-direction: column;
+    gap: 20px;
+}
+
 .table {
     display: flex;
     flex-direction: column;
@@ -289,6 +294,28 @@ h1 {
     text-align: center;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+.result, .th {
+   width: 100%; 
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    padding: 15px 0;
+}
+
+.result:hover {
+    background: var(--selected-color);
+}
+
+td, th {
+    width: 16.66%;
+    text-overflow: ellipsis;
+    text-align: center;
 }
 
 
@@ -535,6 +562,22 @@ h1 {
 
 .section-hide-desktop {
     display: none;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+}
+
+.search-input {
+    padding: 10px;
+    border: 1px solid var(--border-input-color);
+    outline: 0 none;
+    width: 100%;
+    height: 40px;
+
 }
 
 @media (max-width: 1700px   ) {

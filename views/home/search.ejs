@@ -1,0 +1,38 @@
+<div class="section col">
+    <form method="GET" class="search-form">
+        <input type="text" name="data" id="data" class="search-input" placeholder="Nombre del prospecto">
+        <input type="date" name="date" id="date" class="search-input hidden">
+        <select name="staffs" name="staffId" id="staffId" class="search-input hidden" id="staff">
+            <option value="0">-SELECCIONA UNA OPCIÓN-</option>
+            <% staffs.forEach(staff => { %>
+                <option value="<%= staff.id %>"><%= staff.name %></option>             
+            <% }) %>
+        </select>
+        <select name="select_target" id="select_target">
+            <option value="0">Nombre</option>
+            <option value="1">Número telefónico</option>
+            <option value="2">Fecha</option>
+            <option value="3">Asignación</option>
+        </select>
+        <button type="submit" class="btn">Buscar</button>
+    </form>
+
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                    <th>Asignado A</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="tb-results">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="/js/home/search.js"></script>

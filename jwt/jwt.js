@@ -53,9 +53,10 @@ export const jsonWebTokenMiddleware = async(req, res, next) => {
         }
 
         req.user = staff;
+
         next();
     } catch (error) {
         console.log(error);
-        res.status(401).json({ error: 'Error al validar el token. No se ha cargado la información correctamente.' });
+        res.status(401).json({ error: 'Error al validar el token. Vuelve a iniciar sesión.' });
     }
 } 

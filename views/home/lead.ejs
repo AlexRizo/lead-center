@@ -15,9 +15,9 @@
                     </nav>
                     <nav class="status-title">Estado:</nav>
                     <nav>
-                        <% if (lead.contact_status === 0) { %>
+                        <% if (lead.LeadStatusId === 1) { %>
                             Pendiente
-                        <% } else if (lead.contact_status === 1) { %>
+                        <% } else if (lead.LeadStatusId === 2) { %>
                             En Seguimiento
                         <% } else { %>
                             Contactado
@@ -38,9 +38,9 @@
                 <h3 class="card-title">
                     Información Personal
                     <span class="section-hide-desktop">
-                        <% if (lead.contact_status === 0) { %>
+                        <% if (lead.LeadStatusId === 1) { %>
                             - PENDIENTE
-                        <% } else if (lead.contact_status === 1) { %>
+                        <% } else if (lead.LeadStatusId === 2) { %>
                             - EN SEGUIMIENTO
                         <% } else { %>
                             - CONTACTADO
@@ -50,7 +50,7 @@
             </div>
             <div class="card-body">
                 <input name="id" type="hidden" id="id" value="<%= lead.id %>"/>
-                <input name="contact_status" type="hidden" class="input" id="status" value="<%= lead.contact_status %>"/>
+                <input name="LeadStatusId" type="hidden" class="input" id="status" value="<%= lead.LeadStatusId %>"/>
                 <div class="input-content">
                     <label for="name">Nombre Completo</label>
                     <input name="name" class="input input-form" type="text" id="name" maxlength="100" required placeholder="Ernesto Hernández" value="<%= lead.name %>"/>

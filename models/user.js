@@ -3,6 +3,7 @@ import sequelize from '../database/database.js';
 import Staff from './staff.js';
 import Origin from './origin.js';
 import Platform from './platform.js';
+import LeadStatus from './leadStatus.js';
 
 class User extends Model { }
   
@@ -33,8 +34,8 @@ User.init(
             type: new DataTypes.STRING(500),
             allowNull: false,
         },
-        contact_status: {
-            type: new DataTypes.STRING(2),
+        LeadStatusId: {
+            type: new DataTypes.INTEGER,
             defaultValue: 0,
             allowNull: false,
         },
@@ -43,15 +44,15 @@ User.init(
             allowNull: false,
         },
         originId: {
-            type: DataTypes.INTEGER,
+            type: new DataTypes.INTEGER,
             allowNull: true,
         },
         platformId: {
-            type: DataTypes.INTEGER,
+            type: new DataTypes.INTEGER,
             allowNull: true,
         },
         staffId: {
-            type: DataTypes.INTEGER,
+            type: new DataTypes.INTEGER,
             allowNull: true,
         },
         note: {
@@ -70,6 +71,9 @@ User.belongsTo(Staff);
 
 Origin.hasMany(User, { foreignKey: 'originId', targetKey:'id', as:'origin' });
 User.belongsTo(Origin);
+
+LeadStatus.hasMany(User, { foreignKey: 'originId', targetKey:'id', as:'leadStatus',  });
+User.belongsTo(LeadStatus);
 
 Platform.hasMany(User, { foreignKey: 'platformId', targetKey:'id', as:'platform' });
 User.belongsTo(Platform);

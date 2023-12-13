@@ -9,9 +9,9 @@ export const getUsers = async(req, res) => {
     let leads;
 
     if (ur == 1) {
-        leads = await User.findAll({ where: { contact_status: [0, 1], staffId: uid }, include: { all: true }, order: [['date_contact', 'DESC']] });
+        leads = await User.findAll({ where: { LeadStatusId: [1, 2], staffId: uid }, include: { all: true }, order: [['date_contact', 'DESC']] });
     } else {
-        leads = await User.findAll({ where: { contact_status: 0 }, include: { all: true }, order: [['date_contact', 'DESC']] });
+        leads = await User.findAll({ where: { LeadStatusId: 1 }, include: { all: true }, order: [['date_contact', 'DESC']] });
     }
     
     res.json({ leads });
@@ -25,13 +25,13 @@ export const getMyUsers = async(req, res) => {
 
     switch (status) {
         case "0":
-            leads = await User.findAll({ where: { staffId: id, contact_status: 0 }, include: { model: Platform } });
+            leads = await User.findAll({ where: { staffId: id, LeadStatusId: 1 }, include: { model: Platform } });
             break;
         case "1":
-            leads = await User.findAll({ where: { staffId: id, contact_status: 1 }, include: { model: Platform } });            
+            leads = await User.findAll({ where: { staffId: id, LeadStatusId: 2 }, include: { model: Platform } });            
             break;
         case "2":
-            leads = await User.findAll({ where: { staffId: id, contact_status: 2 }, include: { model: Platform } });            
+            leads = await User.findAll({ where: { staffId: id, LeadStatusId: 3 }, include: { model: Platform } });            
             break;
     }
     
@@ -109,14 +109,14 @@ export const updateUser = async(req, res) => {
 }
 
 export const updateContactStatusUser = async(req, res) => {
-    const { id, contact_status } = req.body;
+    const { id, LeadStatusId } = req.body;
     
 
     let message = '';
 
-    await User.update({ contact_status }, { where: { id } })
+    await User.update({ LeadStatusId }, { where: { id } })
 
-    if (contact_status === 1) {
+    if (LeadStatusId === 2) {
         message = 'Se ha marcado como "En Seguimiento".'
     } else {
         message = 'Se ha marcado como "Contactado"'

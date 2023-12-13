@@ -25,7 +25,7 @@ const createTable = (table, leads = {}, row) => {
             <nav class="mini-table-body-item">${ lead.name }</nav>
             <nav class="mini-table-body-item email tbit-4">${ lead.email }</nav>
             <nav class="mini-table-body-item">${ lead.Platform.name}</nav>
-            <nav class="mini-table-body-item">${ status[lead.contact_status] }</nav>
+            <nav class="mini-table-body-item">${ status[lead.LeadStatusId] }</nav>
         </a>
         `; 
     });

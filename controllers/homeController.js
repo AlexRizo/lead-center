@@ -6,7 +6,7 @@ import Staff from "../models/staff.js";
 import User from "../models/user.js";
 
 export const homePage = async(req, res) => {
-    const leads = await User.findAll({ where: { 'contact_status': 0 }, order: [['staffId', 'ASC']] });
+    const leads = await User.findAll({ where: { 'LeadStatusId': 1 }, order: [['staffId', 'ASC']] });
 
     return res.render('home/home', { leads });
 }
@@ -74,9 +74,9 @@ export const viewAdminPage = async(req, res) => {
         return res.status(403).redirect('/403');
     }
     
-    const pendingLeads = await User.findAndCountAll({ where: { staffId: user.id, contact_status: 0 } });
-    const followLeads = await User.findAndCountAll({ where: { staffId: user.id, contact_status: 1 } });
-    const contactedLeads = await User.findAndCountAll({ where: { staffId: user.id, contact_status: 2 } });
+    const pendingLeads = await User.findAndCountAll({ where: { staffId: user.id, LeadStatusId: 1 } });
+    const followLeads = await User.findAndCountAll({ where: { staffId: user.id, LeadStatusId: 2 } });
+    const contactedLeads = await User.findAndCountAll({ where: { staffId: user.id, LeadStatusId: 3 } });
     
     const roles = await Role.findAll();
     
@@ -90,8 +90,8 @@ export const viewAdminPage = async(req, res) => {
 } 
 
 export const ContactedAndFollowing = async(req, res) => {
-    const following = await User.findAll({ where: { contact_status: 1 }, include: [Staff, Origin] });
-    const completed = await User.findAll({ where: { contact_status: 2 }, include: [Staff, Origin] });
+    const following = await User.findAll({ where: { LeadStatusId: 2 }, include: [Staff, Origin] });
+    const completed = await User.findAll({ where: { LeadStatusId: 3 }, include: [Staff, Origin] });
     
     return res.render('home/contacted', { following, completed });
 }

@@ -48,7 +48,7 @@ router.put('/update/:id', [
     check('phone_number', 'El teléfono es obligatorio.').not().isEmpty(),
     check('reason', 'El motivo es obligatorio.').not().isEmpty(),
     check('date_contact', 'la fecha de contacto es obligatoria.').not().isEmpty(),
-    check('contact_status', 'Dato incorrecto').isNumeric(),
+    check('LeadStatusId', 'Dato incorrecto').isNumeric(),
     check('originId', 'El origen es obligatorio.').not().isEmpty(),
     check('platformId', 'la plataforma es obligatoria.').not().isEmpty(),
 
@@ -66,7 +66,7 @@ router.put('/update/:id', [
 
 router.put('/update/contact-status/:id', [
     jsonWebTokenMiddleware,
-    check('contact_status', 'Dato incorrecto').isNumeric(),
+    check('LeadStatusId', 'Dato incorrecto').isNumeric(),
     validateExpress,
 ], updateContactStatusUser);
 
