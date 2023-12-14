@@ -1,4 +1,5 @@
 import { validateJWT } from "../jwt/jwt.js";
+import LeadStatus from "../models/leadStatus.js";
 import Origin from "../models/origin.js";
 import Platform from "../models/platform.js";
 import Role from "../models/role.js";
@@ -52,10 +53,10 @@ export const adminPage = async(req, res) => {
 
     switch (SR) {
         case 2:
-            users = await Staff.findAll({ include: { all: true }, where: { roleId: [1, 2] }, order: [['roleId', 'DESC']] });                        
+            users = await Staff.findAll({ include: [ Role ], where: { roleId: [1, 2] }, order: [['roleId', 'DESC']] });                        
             break;
         case 3:
-            users = await Staff.findAll({ include: { all: true }, order: [['roleId', 'DESC']] });                        
+            users = await Staff.findAll({ include: [ Role ], order: [['roleId', 'DESC']] });                        
             break;
     }
 
@@ -90,8 +91,28 @@ export const viewAdminPage = async(req, res) => {
 } 
 
 export const ContactedAndFollowing = async(req, res) => {
-    const following = await User.findAll({ where: { LeadStatusId: 2 }, include: [Staff, Origin] });
-    const completed = await User.findAll({ where: { LeadStatusId: 3 }, include: [Staff, Origin] });
+    const following = await User.findAll({ 
+        where: { LeadStatusId: 2 },
+        include: [
+            Staff,
+            Origin,
+            { 
+                model: LeadStatus,
+                attributes: ['name'] 
+            }
+        ]
+     });
+    const completed = await User.findAll({ 
+        where: { LeadStatusId: 3 },
+        include: [
+            Staff,
+            Origin,
+            { 
+                model: LeadStatus,
+                attributes: ['name']
+            }
+        ]
+    });
     
     return res.render('home/contacted', { following, completed });
 }

@@ -48,6 +48,10 @@ const adminSection2 = () => {
     window.location = `${ url }/contacted-following?tkn=${ token }`;
 };
 
+const searchSection = () => {
+    window.location = `${ url }/search?tkn=${ token }`;
+}
+
 const logout = () => {
     localStorage.removeItem('tkn');
     localStorage.removeItem('ur');

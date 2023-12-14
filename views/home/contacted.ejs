@@ -7,23 +7,23 @@
             <div class="card-body">
                 <div class="mini-table follow-table">
                     <div class="mini-table-head" id="table">
-                        <nav class="mini-table-head-item">Nombre</nav>
-                        <nav class="mini-table-head-item tbit-4">Correo</nav>
-                        <nav class="mini-table-head-item">Asignado a</nav>
-                        <nav class="mini-table-head-item">Estatus</nav>
+                        <span class="mini-table-head-item">Nombre</span>
+                        <span class="mini-table-head-item tbit-4">Correo</span>
+                        <span class="mini-table-head-item">Asignado a</span>
+                        <span class="mini-table-head-item">Estatus</span>
                     </div>
                     <% following.forEach(lead => { %>
                         <div class="mini-table-row follow-row pointer" onclick="viewLead('<%= lead.id %>')">
-                            <nav class="mini-table-body-item"><%= lead.name %></nav>
-                            <nav class="mini-table-body-item email tbit-4"><%= lead.email %></nav>
-                            <nav class="mini-table-body-item">
+                            <span class="mini-table-body-item"><%= lead.name %></span>
+                            <span class="mini-table-body-item email tbit-4"><%= lead.email %></span>
+                            <span class="mini-table-body-item">
                                 <% if (!lead.Staff) { %>
                                     ----
                                 <% } else { %>
                                     <%= lead.Staff.name %>
                                 <% } %>
-                            </nav>
-                            <nav class="mini-table-body-item">Seguimiento</nav>
+                            </span>
+                            <span class="mini-table-body-item"><%= lead.LeadStatus.name %></span>
                         </div>
                     <% }) %>
                 </div>
@@ -40,23 +40,23 @@
             <div class="card-body">
                 <div class="mini-table contacted-table">
                     <div class="mini-table-head" id="table">
-                        <nav class="mini-table-head-item">Nombre</nav>
-                        <nav class="mini-table-head-item tbit-4">Correo</nav>
-                        <nav class="mini-table-head-item">Asignado a</nav>
-                        <nav class="mini-table-head-item">Estatus</nav>
+                        <span class="mini-table-head-item">Nombre</span>
+                        <span class="mini-table-head-item tbit-4">Correo</span>
+                        <span class="mini-table-head-item">Asignado a</span>
+                        <span class="mini-table-head-item">Estatus</span>
                     </div>
                     <% completed.forEach(lead => { %>
                         <div class="mini-table-row follow-row pointer" onclick="viewLead('<%= lead.id %>')">
-                            <nav class="mini-table-body-item"><%= lead.name %></nav>
-                            <nav class="mini-table-body-item email tbit-4"><%= lead.email %></nav>
-                            <nav class="mini-table-body-item">
+                            <span class="mini-table-body-item"><%= lead.name %></span>
+                            <span class="mini-table-body-item email tbit-4"><%= lead.email %></span>
+                            <span class="mini-table-body-item">
                                 <% if (!lead.Staff) { %>
-                                    ----
+                                    -----
                                 <% } else { %>
                                     <%= lead.Staff.name %>
                                 <% } %>
-                            </nav>
-                            <nav class="mini-table-body-item">Contactado</nav>
+                            </span>
+                            <span class="mini-table-body-item"><%= lead.LeadStatus.name %></span>
                         </div>
                     <% }) %>
                 </div>

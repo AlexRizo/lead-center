@@ -57,6 +57,7 @@ form.addEventListener('submit', (ev) => {
     const params = new URLSearchParams( {
         keyword,
         target: parseInt(target.value),
+        token
     });
 
     console.log(params);

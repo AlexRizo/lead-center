@@ -12,7 +12,9 @@
             <option value="0">Nombre</option>
             <option value="1">Número telefónico</option>
             <option value="2">Fecha</option>
-            <option value="3">Asignación</option>
+            <% if (role != 1) { %>
+                <option value="3">Asignación</option>
+            <% } %>
         </select>
         <button type="submit" class="btn">Buscar</button>
     </form>

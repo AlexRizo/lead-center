@@ -46,7 +46,7 @@ export const jsonWebTokenMiddleware = async(req, res, next) => {
 
     try {
         const { id } = jwt.verify(tkn, process.env.SECRETORPRIVATEKEY);
-        const staff = await Staff.findByPk(id, { include: { all: true } });
+        const staff = await Staff.findByPk(id, { attributes: { exclude: ['password'] } });
 
         if (!staff || !staff.status) {
             return res.status(403).json({ error: 'Token inválido.' });
