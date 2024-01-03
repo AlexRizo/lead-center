@@ -20,7 +20,6 @@ router.post('/create/zapier/api', [
     check('reason', 'El motivo es obligatorio.').not().isEmpty(),
     check('date_contact', 'la fecha de contacto es obligatoria.').not().isEmpty(),
     check('originId', 'El origen es obligatorio.').not().isEmpty(),
-    check('platformId', 'la plataforma es obligatoria.').not().isEmpty(),
     validateExpress,
 ], createUserByZapier);
 

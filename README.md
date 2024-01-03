@@ -8,6 +8,13 @@ npm install
 
 #
 
+## Notas de la versión ```2.11.3```
+* Se ha arreglado un error que impedía introducir un registro sin la plataforma desde la API.
+
+## Notas de la versión ```2.11.2```
+* Se ha agregado un buscador y se han solucionado errores de rendimiento de algunas secciones que tardaban mucho en cargar.
+* *El buscador tiene distintos resultados dependiendo del rol del usuario.
+
 ## Notas de la versión ```2.10.2```
 * Se ha corregido un problema visual con la barra del menú de navegación.
 * Se ha corregido un problema visual que afectaba la posición de todas las tablas.
